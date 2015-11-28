@@ -21,7 +21,8 @@
 }
 
 .console {
-	color: green;
+	color: limegreen;
+	margin-top: 40px	
 }
 
 .component-img {
