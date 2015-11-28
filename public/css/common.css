@@ -1,0 +1,113 @@
+body {
+	font-family: Varela Round, Helvetica;	
+}
+
+.logo-container {
+	margin-left: 10px;	
+	float: left;
+}
+
+.logo {
+	position: relative;
+	bottom: 10px;
+	height: 60px;	
+}
+
+.nav-links {
+	float: right;
+	position: relative;	
+	top: 14px;
+	margin-right: 10px
+}
+
+.nav-link {
+	display: inline-block;
+	margin-left: 45px;
+}
+
+.nav-link a {
+	color: #3ec2d2;
+}
+
+.nav-link.active a {
+	color: black;
+}
+
+.nav-link.active:hover a {
+	text-decoration: none;
+	cursor: default;
+}
+
+.nav-dropdown {
+	display: none;	
+}
+
+.footer {
+	margin-top: 10px;	
+}
+
+.connect {
+	float: right;
+	margin: 0 0 0 0;
+	font-size: 40px;
+}
+
+.contact {
+	font-size: 16px;
+}
+
+@media (max-device-width: 480px) { 	
+	h1 {
+		font-size: 90px;
+	}
+
+	h2 {
+		font-size: 75px;
+	}
+
+	h3 {
+		font-size: 60px;
+	}
+
+	h4 {
+		font-size: 40px;
+	}
+
+	body {
+		font-size: 25px;
+	}	
+
+	.nav-links {
+		display: none;
+	}
+
+	.nav-dropdown {
+		display: block;
+		float:left;
+	}
+
+	.menu-button-icon {
+		font-size: 80px;
+	}
+
+	.logo-container {
+		float: right
+	}
+
+	.dropdown-menu {
+		font-size: 50px;
+	}
+
+	.connect {
+		float: none;
+		font-size: 90px
+	}
+
+	.contact {
+		font-size: 12px
+	}
+
+	.footer {
+		text-align: center;
+	}
+}

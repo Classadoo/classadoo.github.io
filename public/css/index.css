@@ -1,0 +1,59 @@
+.intro {	
+  	color: white;  	
+}
+
+.centered-container {
+	position: relative;
+	top: 25%;
+  	transform: translateY(-25%);	
+}
+
+.intro-container {
+	background: black;  
+  	padding: 50px 20px 50px 20px;
+  	margin-bottom: 60px;
+  	margin-top: 60px;
+}
+
+.intro-line-1 {	
+	font-weight: 900;	
+	font-size: 50px;
+}
+
+.console {
+	color: green;
+}
+
+.component-img {
+	height: 150px;
+	margin-bottom: 30px;
+}
+
+.component-results {
+	color: black;
+	/*background: #AA72B0;*/
+	/*padding: 20px 0 20px 0;*/
+}
+
+.component-header {
+	margin-bottom: 20px;
+	font-weight: 900;
+	text-decoration: underline;
+}
+
+.explanation-question {
+	font-weight: bold;
+	margin-bottom: 20px;
+	/*margin-top: 40px;*/
+}
+
+.free-wrapper {
+	background: #6ec173;
+	color: white;
+	margin: 0 0 0 0;
+}
+
+.free-header {
+	padding: 20px 0 20px 0;
+	margin: 0 0 0 0;
+}
