@@ -91,3 +91,11 @@
 	z-index: 5000;
 	display: none;
 }
+
+.html-example {
+	font-size: 12px;
+}
+
+.example-dom {
+	display: none;
+}

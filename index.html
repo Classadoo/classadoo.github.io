@@ -25,12 +25,12 @@
 <body>
 	<img class="no-img" src="public/img/no.jpg"/>	
 	<div class="topbar clearfix">			
-		<div class="logo-container example-element" id="logo" example-name="cabinet">
+		<div class="logo-container example-element" example-id="logo" example-name="cabinet">
 			<div class="logo-wrapper">					
 				<h3 class="logo-text">Classadoo</h3>
 			</div>
 		</div>
-		<div class="nav-links example-element" id="links" example-name="counter">
+		<div class="nav-links example-element" example-id="links" example-name="counter">
 			<h4 class="nav-link active"><a href="index.html">home</a></h4>
 			<h4 class="nav-link"><a href="courses.html">Courses</a></h4>
 			<h4 class="nav-link"><a href="faq.html">FAQ</a></h4>						
@@ -52,7 +52,7 @@
 		
 	<div class="intro-container">
 		<div class="intro text-center container">
-			<div class="example-element" id="banner" example-name="table">
+			<div class="example-element" example-id="banner" example-name="table">
 				<h1 class="row intro-line-1">Code something. Do something.</h1>
 				<h3 class="row intro-line-2">Classes for 5-12th graders, on how to change the world with code, taught by world changing coders.</h3>
 				<!-- <h2 class="row console-button">> get started<span class="console-blinker">_</span></h2> -->
@@ -78,7 +78,7 @@
 			<div class="row">					
 				<div class="col-md-4">
 					<div class="col-md-2"></div>
-					<div class="example-element col-md-10 component text-center" example-name="chair" id="pitch-component-1">
+					<div class="example-element col-md-10 component text-center" example-name="chair" example-id="pitch-1">
 						<h2 class="component-header">Personalized</h2>							
 						<!-- <img class="component-img" src="public/img/noun_207968.svg"/> -->
 						<h4 class="component-text">When know students can create amazing things, when they combine their passions with software engineering. If your child likes music, we'll help them make an app to find new music. If they like history, we'll make an interactive historical timeline.</h4>
@@ -86,7 +86,7 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="col-md-1"></div>
-					<div class="example-element col-md-10 component text-center" example-name="chair" id="pitch-component-2">
+					<div class="example-element col-md-10 component text-center" example-name="chair" example-id="pitch-2">
 						<h2 class="component-header">Live</h2>							
 						<!-- <img class="component-img" src="public/img/noun_19161.svg"/>				 -->
 						<h4 class="component-text">Our classes aren't just video lectures, they are collaborative discovery sessions. Our custom software allows our teachers to remotely walk students through hands on activities, where they uncover and apply knowledge themselves.</h4>
@@ -94,7 +94,7 @@
 					<div class="col-md-1"></div>
 				</div>				 	
 				<div class="col-md-4">	
-					<div class="col-md-10 example-element component text-center" example-name="chair" id="pitch-component-3">							
+					<div class="col-md-10 example-element component text-center" example-name="chair" example-id="pitch-3">							
 						<h2 class="component-header">Guranteed</h2>
 						<!-- <img class="component-img" src="public/img/noun_34598.svg"/>				 -->
 						<!-- <h3 class="component-text">The teacher receives the finished prototype to continue using in their classroom, expanding their teaching toolbox</h3> -->
@@ -103,6 +103,33 @@
 				</div>
 			</div>						
 		</div>
-	</div>	
+	</div>
+
+	<!-- this is a shadow DOM which we use to get simple html code for each example element, for the tutorial -->
+	<div class="example-dom">	
+		<div id="links">
+			...
+		</div>
+
+		<div id="logo">
+			...
+		</div>
+
+		<div id="banner">
+			...
+		</div>
+
+		<div id="pitch-1">
+			...
+		</div>
+
+		<div id="pitch-2">
+			...
+		</div>
+
+		<div id="pitch-3">
+			...
+		</div>
+	</div>
 </body>
 </html>
