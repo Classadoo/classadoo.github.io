@@ -1,0 +1,33 @@
+.categories-container {
+	margin-top:  100px;
+}
+
+.js .course-logo {
+	width: 125px;
+}
+
+.android .course-logo {
+	width: 250px;
+}
+
+.scratch .course-logo {
+	width: 150px;
+}
+
+.category {
+	margin-bottom: 50px;
+}
+
+.full-listing .header {
+	margin-bottom: 20px;
+	color: #C84F4F;
+}
+
+.level-header {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.category-name {
+	color: #C84F4F;
+}

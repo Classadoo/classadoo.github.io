@@ -1,0 +1,43 @@
+.team-intro {
+	margin-bottom: 30px;
+}
+
+.bios-container {
+	padding-top: 30px;	
+	margin-bottom: 50px;
+}
+
+.profile-img {
+	max-height: 130px;
+	max-width: 130px;
+	border-radius: 50%;
+}
+
+.bio-name {
+	color: #C84F4F;
+}
+
+.bio-row {
+	margin-bottom: 30px;
+}
+
+.header {
+	margin-top: 50;
+	margin-bottom: 50px;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) { 
+	.bio-text, .bio-img {
+		text-align: center;
+	}
+}
+
+@media (max-device-width: 480px) { 
+	.bio-text, .bio-img {
+		text-align: center;
+	}
+
+	.bio-text {
+		margin-bottom: 40px;
+	}
+}
