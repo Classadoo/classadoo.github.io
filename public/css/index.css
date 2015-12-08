@@ -28,7 +28,7 @@
 
 .console-container {
 	padding: 0px;
-	height: 0px;
+	/*height: 0px;*/
 	overflow: hidden;
 }
 
@@ -40,7 +40,7 @@
 	cursor: pointer;
 }
 
-.soneo {
+.console-blinker {
     -webkit-animation: blink 1s infinite steps(1, start);
        -moz-animation: blink 1s infinite steps(1, start);
         -ms-animation: blink 1s infinite steps(1, start);
@@ -95,6 +95,20 @@
 	color: white;
 	text-align: center;
 	font-size: 24px;
+}
+
+.movement-example-overlay {
+	position: absolute;
+	top: 0px;
+	right: -100px;
+	z-index: 1500;
+	background: red;
+	color: black;
+	text-align: center;
+	font-size: 18px;
+	height: 100%;
+	width: 100px;
+	border-left: 5px solid white;
 }
 
 .no-img {
