@@ -25,6 +25,7 @@
 	color: limegreen;
 	margin-top: 40px;
 	font-family: FreeMono, monospace;    	
+	cursor: pointer;
 }
 
 .console-container {
@@ -36,8 +37,7 @@
 .console {
 	color: limegreen;
 	text-align: left;	
-	font-size: 18px;
-	cursor: pointer;
+	font-size: 18px;	
 }
 
 .console-blinker {
@@ -141,7 +141,7 @@
 }
 
 .html-example {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .example-dom {
