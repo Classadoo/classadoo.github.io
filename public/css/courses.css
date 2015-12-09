@@ -1,5 +1,5 @@
 .categories-container {
-	margin-top:  100px;
+	margin-top:  50px;
 }
 
 .js .course-logo {
@@ -30,4 +30,8 @@
 
 .category-name {
 	color: #C84F4F;
+}
+
+.contact {
+	margin-bottom: 30px;	
 }

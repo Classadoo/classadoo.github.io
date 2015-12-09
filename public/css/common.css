@@ -1,5 +1,9 @@
 body {
-	font-family: Varela Round, Helvetica;	
+	font-family: Varela Round, Helvetica;		
+}
+
+h4 {
+	line-height: 1.4
 }
 
 .logo-container {
@@ -40,20 +44,6 @@ body {
 
 .nav-dropdown {
 	display: none;	
-}
-
-.footer {
-	margin-top: 10px;	
-}
-
-.connect {
-	float: right;
-	margin: 0 0 0 0;
-	font-size: 40px;
-}
-
-.contact {
-	font-size: 16px;
 }
 
 @media (max-device-width: 480px) { 	
