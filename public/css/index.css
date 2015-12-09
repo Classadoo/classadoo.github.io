@@ -12,7 +12,7 @@
 	background: black;  
   	padding: 50px 20px 50px 20px;
   	/*margin-bottom: 60px;*/
-  	margin-top: 60px;
+  	margin-top: 40px;
 }
 
 .intro-line-1 {	
@@ -107,14 +107,14 @@
 .example-overlay {
 	position: absolute;
 	top: 0;
-	z-index: 1000;
-	opacity: .9;
+	z-index: 1000;	
 	width: 100%;
 	height: 100%;
-	background: grey;
+	background: rgba(80,80,80,.9);
 	color: white;
 	text-align: center;
 	font-size: 24px;
+	border: 5px solid darkgrey;
 }
 
 .movement-example-overlay {
@@ -150,6 +150,10 @@
 
 
 /*CONSOLE*/
+
+.output {
+	margin-bottom: 5px;
+}
 
 .console-blinker {
     -webkit-animation: blink-button 1s infinite;
