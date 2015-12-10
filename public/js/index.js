@@ -3,8 +3,16 @@ var validColors = ["blue", "red", "gray", "black", "white", "green", "yellow", "
 var exampleElements;
 var shadowElements;
 var numberOfChanges = 0;
+
 var promptText = "previous command> "
 var escapedPromptText = "previous command&gt; "
+
+var escapedFrontEmphasis = "&lt;i&gt;"
+var escapedBackEmphasis = "&lt;/i&gt;"
+
+var escapedFrontBold = "&lt;b&gt;"
+var escapedBackBold = "&lt;/b&gt;"
+
 var consoleEl;
 var consoleOpen = false;
 
@@ -17,123 +25,128 @@ var pitch2Interval;
 var pitch3Interval;
 
 var steps = [
-	{
-		text: "This is the Classadoo webpage",
-		action: function() { changePrompt("press enter or type 'help'") }
-	},
-	{
-		text: "What is a webpage really?"
-	},
-	{
-		text: "A webpage is like a room in your house",
-		action: function() {	
-			// $("body").css("border", "solid black 10px")
-		}
-	},
-	{
-		text: "All the things on the page are like furniture",
-		action: function() {	
-			overlayExamples()
-		}
-	},
-	{
-		text: "Like furniture in a room, I've carefully arranged and HAND painted EVERYTHING on this page."	
-	},
-	{
-		interaction: function(cmd, term) {
-			changePrompt("enter command or type 'help'");							
+	// {
+	// 	text: "This is the Classadoo webpage",
+	// 	action: function() { changePrompt("press enter or type 'help'") }
+	// },
+	// {
+	// 	text: "What is a webpage really?"
+	// },
+	// {
+	// 	text: "A webpage is like a room in your house",
+	// 	action: function() {	
+	// 		// $("body").css("border", "solid black 10px")
+	// 	}
+	// },
+	// {
+	// 	text: "All the things on the page are like furniture",
+	// 	action: function() {	
+	// 		overlayExamples()
+	// 	}
+	// },
+	// {
+	// 	text: "Like furniture in a room, I've carefully arranged and HAND painted EVERYTHING on this page."	
+	// },
+	// {
+	// 	interaction: function(cmd, term) {
+	// 		changePrompt("enter command or type 'help'");							
 
-			if (cmd === "table right 100") {
-				var el = $("[example-name=table]");
-				el.css("right", "100");
-				echo(term, "Oh no, not my table!");							
-				changePrompt("press enter or type 'help'");
-				return true
-			} else {
-				echo(term, "It would be TERRIBLE if you were to move the table by typing 'table right 100' and pressing enter");
-				return false				
-			}							
-		},
-		help: "Try typing exactly this: table right 100. Then press enter to input that command."	
-	},
-	{
-		text: "What just happened is that you told your browser to push the table's right edge until it was 100 pixels from it's starting location",
-		action: function() {
-			// add the overlay showing the distance moved
-			var overlay = $("<div class='movement-example-overlay'>100 pixels</div>");
-			var el = $("[example-name=table]");			
-			$(el).append(overlay);			
-		}		
-	},
-	{
-		text: "This is why the whole table actually moved to the LEFT, because you pushed the RIGHT edge.",
-		help: "Imagine if I told you to push a table from the right side, 100 inches. By tying 'table right 100' you are telling the broswer to do just that, but it thinks in pixels instead of inches."
-	},
-	{
-		interaction: function(cmd, term) {
-			$(".movement-example-overlay").remove()
-			changePrompt("enter comment or type 'help'");	
-			var args = cmd.split(" ")
-			var furntitureName = args[0];
-			var command = args[1];
-			var color = args[2]
-			if (args.length < 3) {
-				echo(term, "Well, while you're moving my furniture around, you might as well do some painting as well. Try changing the background of one of the furniture pieces by typing something like 'counter background blue'")
-			} else {
-				colorChanged = false
-				invalidColor = false
-				exampleElements.each(function(i, el) {				
-					if ($(el).attr("example-name") == furntitureName) {												
-						if (validColors.indexOf(color) > -1) {
-							$(el).css(command, color); 							
-							$(el).find(".example-overlay").css("background", "rgba(80,80,80,.6)");
-							colorChanged = true;
-						} else {							
-							invalidColor = true
-						}						
-					}
-				})	
+	// 		if (cmd === "table right 100") {
+	// 			var el = $("[example-name=table]");
+	// 			el.css("right", "100");
+	// 			echo(term, "Oh no, not my table!");							
+	// 			changePrompt("press enter or type 'help'");
+	// 			return true
+	// 		} else {
+	// 			echo(term, "It would be TERRIBLE if you were to move the table by typing <i>table right 100</i> and pressing enter");
+	// 			return false				
+	// 		}							
+	// 	},
+	// 	help: "Try typing exactly this: <i>table right 100</i>. Then press enter to input that command."	
+	// },
+	// {
+	// 	text: "What just happened is that you told your browser to push the table's right edge until it was 100 pixels from it's starting location",
+	// 	action: function() {
+	// 		// add the overlay showing the distance moved
+	// 		var overlay = $("<div class='movement-example-overlay'>100 pixels</div>");
+	// 		var el = $("[example-name=table]");			
+	// 		$(el).append(overlay);			
+	// 	}		
+	// },
+	// {
+	// 	text: "This is why the whole table actually moved to the LEFT, because you pushed the RIGHT edge.",
+	// 	help: "Imagine if I told you to push a table from the right side, 100 inches. By tying <i>table right 100</i> you are telling the broswer to do just that, but it thinks in pixels instead of inches."
+	// },
+	// {
+	// 	interaction: function(cmd, term) {
+	// 		$(".movement-example-overlay").remove()
+	// 		changePrompt("enter comment or type 'help'");	
+	// 		var args = cmd.split(" ")
+	// 		var furntitureName = args[0];
+	// 		var command = args[1];
+	// 		var color = args[2]
+	// 		if (args.length < 3) {
+	// 			echo(term, "Well, while you're moving my furniture around, you might as well do some painting as well. Try changing the background of one of the furniture pieces by typing something like <i>counter background blue</i>")
+	// 		} else {
+	// 			if (command == "background") {
+	// 				colorChanged = false
+	// 				invalidColor = false
+	// 				exampleElements.each(function(i, el) {				
+	// 				if ($(el).attr("example-name") == furntitureName) {												
+	// 						if (validColors.indexOf(color) > -1) {
+	// 							$(el).css(command, color); 							
+	// 							$(el).find(".example-overlay").css("background", "rgba(80,80,80,.6)");
+	// 							colorChanged = true;
+	// 						} else {							
+	// 							invalidColor = true
+	// 						}						
+	// 					}
+	// 				})			
 
-				if (invalidColor) { 
-					echo(term, "I don't know that color try one of [" + validColors.join(", ") + "]");
-					return false
-				} else if (!colorChanged) {
-					echo(term, "I don't know that piece of furniture...")
-					return false
-				} else {
-					echo(term, "ok great!");							
-					// $(".no-img").show();
-					changePrompt("press enter or type 'help'");
-					return true
-				}
-			}
-		},
-		help: "Try typing exactly this: counter background blue"		
-	},
-	{
-		text: "Good reorganization of my webpage's furniture, but let's put everything back for now",
-		action: function() {
-			$(".no-img").hide();			
-			resetWithOverlays()
-		}
-	},
-	{
-		text: "OK so a web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like 'table background blue'."
-	},
-	{
-		text: "In the software world we call these 'things', elements.",
-		action: function() {
-			$(".example-name").html("element");
-		}
-	},
-	{
-		text: "And to make sure we can choose the right element when reorganizing a page, like we did above, we give each element a name.",
-		action: function() {
-			$(".example-name").each(function(i, el) {
-				$(el).html($(el).parent().parent().attr("example-id"));
-			})
-		}	
-	},
+	// 				if (invalidColor) { 
+	// 					echo(term, "I don't know that color try one of [" + validColors.join(", ") + "]");
+	// 					return false
+	// 				} else if (!colorChanged) {
+	// 					echo(term, "I don't know that piece of furniture...")
+	// 					return false
+	// 				} else {
+	// 					echo(term, "ok great!");							
+	// 					// $(".no-img").show();
+	// 					changePrompt("press enter or type 'help'");
+	// 					return true
+	// 				}			
+	// 			} else {
+	// 				echo(term, "Oops, you typed <i>" + command + "</i>, when you need to type <i>background</i>. Try <i>counter background blue</i>")
+	// 				return false
+	// 			}								
+	// 		}
+	// 	},
+	// 	help: "Try typing exactly this: counter background blue"		
+	// },
+	// {
+	// 	text: "Good reorganization of my webpage's furniture, but let's put everything back for now",
+	// 	action: function() {
+	// 		$(".no-img").hide();			
+	// 		resetWithOverlays()
+	// 	}
+	// },
+	// {
+	// 	text: "OK so a web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <i>table background blue</i>."
+	// },
+	// {
+	// 	text: "In the software world we call these 'things', elements.",
+	// 	action: function() {
+	// 		$(".example-name").html("element");
+	// 	}
+	// },
+	// {
+	// 	text: "And to make sure we can choose the right element when reorganizing a page, like we did above, we give each element a name.",
+	// 	action: function() {
+	// 		$(".example-name").each(function(i, el) {
+	// 			$(el).html($(el).parent().parent().attr("example-id"));
+	// 		})
+	// 	}	
+	// },
 	{
 		interaction: function(cmd, term) {
 			changePrompt("enter comment or type 'help'")
@@ -142,7 +155,7 @@ var steps = [
 			var command = args[1];			
 			var arg = args[2]			
 			if (args.length < 3) {
-				echo(term, "Try changing the layout or background of each element now, using their new names. You can use a command like: 'banner {edge} {number}' or 'counter background {color}'. {edge} can be top, right, bottom, or left, {number} can be any number, and {color} can be any primary color.")
+				echo(term, "Try changing the layout or background of each element now, using their new names. You can use a command like: <i>banner <b>edge</b> direction</i> or <i>counter background <b>color</b></i>. <b>edge</b> can be top, right, bottom, or left, <b>number</b> can be any number, and <b>color</b> can be any primary color")
 			} else {			
 				actionTaken = false;
 				var el = $("[example-id=" + id + "]")
@@ -160,12 +173,14 @@ var steps = [
 				} 
 				
 				if (!actionTaken) {
-					echo(term, "Try 'heading left 100' or 'links background red'.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(", "));
+					echo(term, "Try <i>heading left 100</i> or <i>links background red</i>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(", "));
 					return false
 				} else {
 					el.find(".example-overlay").remove();
-					if ($(".example-overlay").length){
+					var numberRemainingElementsToMove = $(".example-overlay").length
+					if (numberRemainingElementsToMove){
 						// still some elements left to move
+						echo(term, "Good! Now change the other " + numberRemainingElementsToMove + " elements as well.")
 						return false
 					} else {
 						// all elements have been moved, go to the next step
@@ -190,10 +205,10 @@ var steps = [
 		action: overlayHtmlExamples
 	},
 	{
-		text: "Each of the elements which are highlighted is a 'div'. A div is a container element. It holds other elements. This means that when you move a div, everything inside it moves with it.",		
+		text: "Each of the elements which are highlighted are contained within a 'div'. Div is short for 'divider'. Divs are boxes that holds other elements. Like, the div with the id 'logo' is a box which is holding the text 'Clasadoo'",		
 	},
 	{
-		text: "So the '...' which is shown inside each div represents the other elements inside each div, like text and images.",		
+		text: "Notice that the code for each div includes something like id='banner', or id='logo'. This is how we specify an elements name in code."
 	},
 	{
 		interaction: function(cmd, term) {
@@ -203,7 +218,7 @@ var steps = [
 			var command = args[1];			
 			var arg = args[2]			
 			if (args.length < 3) {
-				echo(term, "Now try changing some elements again, the same as before, using their ids, and see how the HTML changes. Let's make 3 changes.")
+				echo(term, "Try moving around elements again, or changing their backgrounds, using commands like <i>banner right 100</i> or <i>logo background blue</i>. See how each div's code changes. Let's make 3 changes.")
 			} else {			
 				actionTaken = false;
 				var el = $("[example-id=" + id + "]")
@@ -224,7 +239,7 @@ var steps = [
 				} 
 				
 				if (!actionTaken) {
-					echo(term, "Try 'heading left 100' or 'links background red'.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(" "));
+					echo(term, "Try <i>heading left 100</i> or <i>links background red</i>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(" "));
 					return false
 				} else {
 					numberOfChanges += 1
@@ -237,16 +252,21 @@ var steps = [
 						// three elements have been moved, go to the next step
 						el.find(".example-overlay").html(generateExampleHtmlOverlay(el.attr("example-id")));
 						changePrompt("press enter or type 'help'");						
-						echo(term, "Good job, notice that there is now some HTML code for 'style'. An element's style tells your browser where to put each element, and how it should look.")
+						echo(term, "Good job, notice that each div now has some code like style='background: blue'. An element's style tells your browser where to put each element, and how it should look.")
 						return true
 					}
 				}
 			}	
 		},
-		help: 'Each element has an id. You can find each element\'s id by looking at the part of the code that says id="banner", or id="logo". To change an element try something like \'links bottom 100\'.'
+		help: 'In order to move an element or change it\'s backgroud you need to know it\'s id. You can find each element\'s id by looking at the part of the code that says id="banner", or id="logo". To change an element try something like <i>links bottom 100</i>.'
 	},
 	{
-		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed",
+		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. You can use this to make move things across a page, or make them blink.",			
+	},
+	{
+		text: "Hit enter and I'll show a demonstration of this. What the HTML code for each element, and notice how each one's 'style' changes."		
+	},
+	{		
 		action: function() {
 			var bannerRight = false;
 			var logoBlue = false;
@@ -321,11 +341,10 @@ var steps = [
 				
 				pitch3Yellow = !pitch3Yellow				
 			}, 700)
-		},
-		help: "Watch how each element's style attribute changes as they move around and change color."
+		},		
 	},
 	{
-		text: "The changes to the HTML are made by invisible code running on the page called Javascript",
+		text: "In this case the changes to 'style' are being made by invisible code running on the page called Javascript",
 		action: function () {
 			clearInterval(bannerInterval);
 			clearInterval(logoInterval);
@@ -341,7 +360,8 @@ var steps = [
 				style("pitch-2", { left: "" })
 				style("pitch-3", { background: "" })	
 			}, 1000)
-		}
+		},
+		help: "Watch how each element's style attribute changes as they move around and change color."
 	},
 	{
 		text: "With a knowledge of Javascript and HTML, you can make a webpage that does almost anything",
@@ -427,13 +447,31 @@ function resetWithOverlays() {
 
 // echos and deletes any empty prompt lines
 function echo(term, text) {
-	term.echo(text)		
+	// first replace my custom tags with single characters, so they don't get cutoff if the terminal wraps to a new line.
+	var openBold = "%"
+	var openEmphasis = "#"
+	var close = "~"
+
+	var processedText = replaceAll(replaceAll(replaceAll(text, "<i>", openEmphasis), "(<\/i>)|(<\/b>)", close), "<b>", openBold)
+	term.echo(processedText)		
 	
 	consoleEl.find(".output").each(function(i, el) {		
-		if ($(el).children()[0].innerHTML === escapedPromptText) {
-			$(el).remove();
-		}
+		$(el).children().each(function(i, child) {			
+			var html = child.innerHTML;
+			
+			if (html === escapedPromptText) {
+				$(el).remove();
+			} 
+			
+			html = replaceAll(replaceAll(replaceAll(html, openBold, "<i class='bold'>"), openEmphasis, "<i class='emphasis'>"), close, "</i>");		 		
+
+			child.innerHTML = html;
+		})		
 	})
+}
+
+function replaceAll(str, find, replace) {
+	return str.replace(new RegExp(find, 'g'), replace);
 }
 
 function startTerminal() {
@@ -454,22 +492,22 @@ function startTerminal() {
 				echo(term, "Press your enter key to move on to the next step!")
 			}
 		} else {
-			if (step && step.text) {
-				echo(term, steps[stepIndex].text)
-				step.action && step.action()			
-				stepIndex += 1
-			} else if (step && step.interaction) {
+			if (step && step.interaction) {
 				var goToNextStep = step.interaction(command, term)
 				if (goToNextStep) {
 					stepIndex += 1
 				}
-			}               	
-		}
-		
+			} else {
+				step.text && echo(term, step.text)
+				step.action && step.action()			
+				stepIndex += 1		
+			}               				
+		}		
     }, {
         greetings: '',
         name: 'classadoo_demo',
         height: 200,
+        outputLimit: -1,
         prompt: promptText
     });
 

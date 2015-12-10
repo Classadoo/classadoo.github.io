@@ -154,6 +154,14 @@
 
 /*CONSOLE*/
 
+i.emphasis {
+	color: gainsboro;
+}
+
+i.bold {
+
+}
+
 .output {
 	margin-bottom: 5px;
 }
