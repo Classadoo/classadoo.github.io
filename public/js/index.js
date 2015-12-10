@@ -58,11 +58,11 @@ var steps = [
 	// 			changePrompt("press enter or type 'help'");
 	// 			return true
 	// 		} else {
-	// 			echo(term, "It would be TERRIBLE if you were to move the table by typing <i>table right 100</i> and pressing enter");
+	// 			echo(term, "It would be TERRIBLE if you were to move the table by typing <c>table right 100</c> and pressing enter");
 	// 			return false				
 	// 		}							
 	// 	},
-	// 	help: "Try typing exactly this: <i>table right 100</i>. Then press enter to input that command."	
+	// 	help: "Try typing exactly this: <c>table right 100</c>. Then press enter to input that command."	
 	// },
 	// {
 	// 	text: "What just happened is that you told your browser to push the table's right edge until it was 100 pixels from it's starting location",
@@ -75,7 +75,7 @@ var steps = [
 	// },
 	// {
 	// 	text: "This is why the whole table actually moved to the LEFT, because you pushed the RIGHT edge.",
-	// 	help: "Imagine if I told you to push a table from the right side, 100 inches. By tying <i>table right 100</i> you are telling the broswer to do just that, but it thinks in pixels instead of inches."
+	// 	help: "Imagine if I told you to push a table from the right side, 100 inches. By tying <c>table right 100</c> you are telling the broswer to do just that, but it thinks in pixels instead of inches."
 	// },
 	// {
 	// 	interaction: function(cmd, term) {
@@ -86,7 +86,7 @@ var steps = [
 	// 		var command = args[1];
 	// 		var color = args[2]
 	// 		if (args.length < 3) {
-	// 			echo(term, "Well, while you're moving my furniture around, you might as well do some painting as well. Try changing the background of one of the furniture pieces by typing something like <i>counter background blue</i>")
+	// 			echo(term, "Well, while you're moving my furniture around, you might as well do some painting as well. Try changing the background of one of the furniture pieces by typing something like <c>counter background blue</c>")
 	// 		} else {
 	// 			if (command == "background") {
 	// 				colorChanged = false
@@ -116,7 +116,7 @@ var steps = [
 	// 					return true
 	// 				}			
 	// 			} else {
-	// 				echo(term, "Oops, you typed <i>" + command + "</i>, when you need to type <i>background</i>. Try <i>counter background blue</i>")
+	// 				echo(term, "Oops, you typed <c>" + command + "</c>, when you need to type <c>background</c>. Try <c>counter background blue</c>")
 	// 				return false
 	// 			}								
 	// 		}
@@ -131,7 +131,7 @@ var steps = [
 	// 	}
 	// },
 	// {
-	// 	text: "OK so a web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <i>table background blue</i>."
+	// 	text: "OK so a web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <c>table background blue</c>."
 	// },
 	// {
 	// 	text: "In the software world we call these 'things', elements.",
@@ -155,7 +155,7 @@ var steps = [
 			var command = args[1];			
 			var arg = args[2]			
 			if (args.length < 3) {
-				echo(term, "Try changing the layout or background of each element now, using their new names. You can use a command like: <i>banner <b>edge</b> direction</i> or <i>counter background <b>color</b></i>. <b>edge</b> can be top, right, bottom, or left, <b>number</b> can be any number, and <b>color</b> can be any primary color")
+				echo(term, "Try changing the layout or background of each element now, using their new names. You can use a command like: <c>banner <d>edge</d> direction</c> or <c>counter background <d>color</d></c>. <d>edge</d> can be top, right, bottom, or left, <d>number</d> can be any number, and <d>color</d> can be any primary color")
 			} else {			
 				actionTaken = false;
 				var el = $("[example-id=" + id + "]")
@@ -173,7 +173,7 @@ var steps = [
 				} 
 				
 				if (!actionTaken) {
-					echo(term, "Try <i>heading left 100</i> or <i>links background red</i>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(", "));
+					echo(term, "Try <c>heading left 100</c> or <c>links background red</c>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(", "));
 					return false
 				} else {
 					el.find(".example-overlay").remove();
@@ -218,7 +218,7 @@ var steps = [
 			var command = args[1];			
 			var arg = args[2]			
 			if (args.length < 3) {
-				echo(term, "Try moving around elements again, or changing their backgrounds, using commands like <i>banner right 100</i> or <i>logo background blue</i>. See how each div's code changes. Let's make 3 changes.")
+				echo(term, "Try moving around elements again, or changing their backgrounds, using commands like <c>banner right 100</c> or <c>logo background blue</c>. See how each div's code changes. Let's make 3 changes.")
 			} else {			
 				actionTaken = false;
 				var el = $("[example-id=" + id + "]")
@@ -239,7 +239,7 @@ var steps = [
 				} 
 				
 				if (!actionTaken) {
-					echo(term, "Try <i>heading left 100</i> or <i>links background red</i>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(" "));
+					echo(term, "Try <c>heading left 100</c> or <c>links background red</c>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(" "));
 					return false
 				} else {
 					numberOfChanges += 1
@@ -258,7 +258,7 @@ var steps = [
 				}
 			}	
 		},
-		help: 'In order to move an element or change it\'s backgroud you need to know it\'s id. You can find each element\'s id by looking at the part of the code that says id="banner", or id="logo". To change an element try something like <i>links bottom 100</i>.'
+		help: 'In order to move an element or change it\'s backgroud you need to know it\'s id. You can find each element\'s id by looking at the part of the code that says id="banner", or id="logo". To change an element try something like <c>links bottom 100</c>.'
 	},
 	{
 		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. You can use this to make move things across a page, or make them blink.",			
@@ -448,26 +448,7 @@ function resetWithOverlays() {
 // echos and deletes any empty prompt lines
 function echo(term, text) {
 	// first replace my custom tags with single characters, so they don't get cutoff if the terminal wraps to a new line.
-	var openBold = "%"
-	var openEmphasis = "#"
-	var close = "~"
-
-	var processedText = replaceAll(replaceAll(replaceAll(text, "<i>", openEmphasis), "(<\/i>)|(<\/b>)", close), "<b>", openBold)
-	term.echo(processedText)		
-	
-	consoleEl.find(".output").each(function(i, el) {		
-		$(el).children().each(function(i, child) {			
-			var html = child.innerHTML;
-			
-			if (html === escapedPromptText) {
-				$(el).remove();
-			} 
-			
-			html = replaceAll(replaceAll(replaceAll(html, openBold, "<i class='bold'>"), openEmphasis, "<i class='emphasis'>"), close, "</i>");		 		
-
-			child.innerHTML = html;
-		})		
-	})
+	term.echoHelp(text);
 }
 
 function replaceAll(str, find, replace) {
@@ -483,7 +464,7 @@ function startTerminal() {
 	// overlayExamples()
 	// overlayHtmlExamples();
 
-	consoleEl.terminal(function(command, term) {
+	var term = new Terminal(consoleEl, function(command, term) {
 		var step = steps[stepIndex]
 		if (command === "help" || command === "'help'") {
 			if (step && step.help){
@@ -504,16 +485,12 @@ function startTerminal() {
 			}               				
 		}		
     }, {
-        greetings: '',
-        name: 'classadoo_demo',
-        height: 200,
-        outputLimit: -1,
+        greeting: "<div class='class-intro'>Welcome to 'Making Things Happen on a Website'. Our courses are based around understanding and creating real websites (like this one). If you like this tutorial, let us know, and we can schedule another one with a real teacher!</div><div>If you have a question, just type 'help' and press enter. In a real Classadoo course you would raise your hand and our teacher would answer. However, for this example unfortunately only our robot teacher is available.</div>",        
+        height: 170,
         prompt: promptText
     });
-
-    $(".terminal-output").append("<div class='class-intro'>Welcome to 'Making Things Happen on a Website'. Our courses are based around understanding and creating real websites (like this one). If you like this tutorial, let us know, and we can schedule another one with a real teacher!</div>")
-    $(".terminal-output").append("<div class='class-intro'>If you have a question, just type 'help' and press enter. In a real Classadoo course you would raise your hand and our teacher would answer. However, for this example unfortunately only our robot teacher is available.</div>");
-    changePrompt("press enter or type 'help'")
+	
+	term.changePrompt("press enter or type 'help'>")
 }
 
 function openConsole() {

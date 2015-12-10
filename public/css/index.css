@@ -30,7 +30,7 @@
 
 .console-container {
 	padding: 0px;
-	height: 0px;
+	/*height: 0px;*/
 	overflow: hidden;
 }
 
@@ -38,13 +38,6 @@
 	color: limegreen;
 	text-align: left;	
 	font-size: 18px;	
-}
-
-.console-blinker {
-    -webkit-animation: blink 1s infinite steps(1, start);
-       -moz-animation: blink 1s infinite steps(1, start);
-        -ms-animation: blink 1s infinite steps(1, start);
-            animation: blink 1s infinite steps(1, start);
 }
 
 .console-container {
@@ -154,62 +147,14 @@
 
 /*CONSOLE*/
 
-i.emphasis {
+c {
 	color: gainsboro;
 }
 
-i.bold {
-
+d {
+	color: darkorange;
 }
 
-.output {
+.output-line {
 	margin-bottom: 5px;
-}
-
-.console-blinker {
-    -webkit-animation: blink-button 1s infinite;
-       -moz-animation: blink-button 1s infinite; 
-        -ms-animation: blink-button 1s infinite;
-            animation: blink-button 1s infinite;
-}
-
-@keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb; /* not #aaa because it's seem there is Google Chrome bug */
-        color: #000;
-  }
-}
-@-webkit-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
-}
-@-ms-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
-}
-@-moz-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
 }
