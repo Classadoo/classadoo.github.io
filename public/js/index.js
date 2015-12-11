@@ -24,20 +24,65 @@ var pitch3Interval;
 var term;
 
 var steps = [
+	// {
+	// 	text: "Welcome to the tutorial! Press enter to continue..."
+	// },
+	// {
+	// 	text: "In this lesson you will learn how a webpage works, using THIS webpage as an example."
+	// },
+	// {
+	// 	text: "Instructions and help will appear here in the 'help' section.",	
+	// },
+	// {
+	// 	task: "During the tutorial you will be given 'tasks' to work on. Your current task (if there is one) will appear here.",	
+	// },
+	// {
+	// 	task: " ",
+	// 	text: "To complete tasks you will type commands into the prompt below, then press enter."
+	// },
+	// {
+	// 	task: "",
+	// 	text: "If at any point you feel confused, just type <c>help</c>, and press enter. Let's try this now!"
+	// },	
+	// {
+	// 	task: "Type <c>help</c> and press enter.",
+	// 	help: "Great! Notice that the word <c>help</c> is highlighted white. Anything highlighted white is a command you can type into the prompt.",
+	// 	// this is just to tell the command processor to move on after help is typed.
+	// 	helpTutorial: true,
+	// 	interaction: function(cmd) {
+	// 		term.echoHelp("Hmm, not quite, you typed: <c>" + cmd + "</c>, but you need to type <c>help</c>")
+	// 	}
+	// },
+	// {
+	// 	task: " ",
+	// 	text: "Let's try one more task before we start."
+	// },
 	{
-		text: "Welcome to the tutorial!"
+		task: "Tell me the name you like to use (doesn't have to be your real name). To do this type <c>set-name <d>name</d></c>. Words which are colored orange are 'parameters'. When you actually type a command you'll substitute something else for the orange word. So here you might type <c>set-name Alice</c>.",
+		interaction: function(cmd) {
+			var args = cmd.split(" ")
+			var cmdName = args[0]
+			var name = args[1]
+			if (cmdName == "set-name") {
+				if (name == "name") {
+					term.echoHelp("Almost, but don't actually type <c>set-name name</c>, instead, substitute your name for the word <d>name</d>. Ex: <c>set-name Hugo</c>.");
+					return false
+				} else {
+					term.echoHelp("Great, nice to meet you " + name + "!");
+					return true	
+				}				
+			} else {
+				term.echoHelp("Hmmm, not quite. Try typing something like <c>set-name Alice</c> or <c>set-name Paul</c>.");
+				return false
+			}
+		}
 	},
 	{
-		text: "In this lesson you will learn how a webpage works, using THIS webpage as an example."
+		text: "So now let's get started!",	
+		task: " "
 	},
 	{
-		text: "Instructions and help will appear here in the 'help' section",	
-	},
-	{
-		task: "During the tutorial you will be given 'tasks' to work on. Your current task (if there is one) will appear here.",	
-	},
-	{
-		text: "This is the Classadoo webpage"		
+		text: "This is the classadoo webpage"
 	},
 	{
 		text: "What is a webpage really?"
@@ -467,20 +512,29 @@ function startTerminal() {
 
 	term = new Terminal(consoleEl, function(command) {
 		var step = steps[stepIndex]
-		if (command === "help" || command === "'help'") {
-			if (step && step.help){
-				term.echoHelp(step.help);
+		if (command === "help" || command === "'help'") {			
+			if (step && step.help && step.interaction){
+				// if it's an interactive step, then we should show help for the current step
+				term.echoHelp(step.help);				
+			} else if (steps[stepIndex-1] && steps[stepIndex-1].help) {
+				// if it's not an interactive step, we should show the help from the last step, since that's the prompt the user is going off
+				term.echoHelp(steps[stepIndex-1].help);				
 			} else {
 				term.echoHelp("Press your enter key to move on to the next step!");
 			}
+
+			if (step.helpTutorial) stepIndex += 1
 		} else {
 			if (step && step.interaction) {
-				var goToNextStep = step.interaction(command)
-				if (goToNextStep) {
-					stepIndex += 1
-				}
+				step.task && setTask(step.task);
+				if (command) {				
+					var goToNextStep = step.interaction(command)
+					if (goToNextStep) {
+						stepIndex += 1
+					}
+				} 
 			} else {
-				step.task && term.echoTask(step.task);
+				step.task && setTask(step.task);
 				if (step.text) {
 					term.echoHelp(step.text);
 				} else {
@@ -492,10 +546,16 @@ function startTerminal() {
 		}		
     }, {
         // greeting: "<div class='class-intro'>Welcome to your first classadoo tutorial. This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
-        prompt: "press enter or type 'help'>"
+        prompt: "press enter or type <c>help</c>>"
     });	
 
     openConsole();
+}
+
+var currentTask = "";
+function setTask(task) {
+	currentTask !== task && term.echoTask(task);	
+	currentTask = task;
 }
 
 function openConsole() {
