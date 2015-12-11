@@ -10,6 +10,38 @@
   margin-right: 5px;
 }
 
+.terminal-wrapper .task-display {
+  margin-bottom: 5px; 
+  border-bottom: 2px solid rgba(86, 86, 86, .8);
+}
+
+.terminal-wrapper .help-display {
+  margin-bottom: 5px; 
+  border-bottom: 2px solid rgba(86, 86, 86, .8);
+}
+
+.task-wrapper, .help-wrapper, .command-history-wrapper, .input-wrapper {
+  display: flex;
+}
+
+.terminal-wrapper .display {
+  width: 80%;
+}
+
+.terminal-wrapper .display-label {
+  width: 10%;  
+  color: aqua; 
+}
+
+.terminal-wrapper .greeting {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.terminal-wrapper .output-line {
+  margin-bottom: 5px;
+}
+
 /*.console-cursor {
     -webkit-animation: blink-button 1s infinite;
        -moz-animation: blink-button 1s infinite; 
