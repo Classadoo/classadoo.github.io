@@ -18,8 +18,8 @@ var term;
 var steps = []
 
 // steps = steps.concat(introSteps);
-// steps = steps.concat(furnitureSteps);
-// steps = steps.concat(namedElementSteps);
+steps = steps.concat(furnitureSteps);
+steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
 
 function startTerminal() {
@@ -29,7 +29,7 @@ function startTerminal() {
 	consoleEl = $(".console");
 
 	// overlayExamples()
-	overlayHtmlExamples();
+	// overlayHtmlExamples();
 
 	term = new Terminal(consoleEl, function(command) {
 		var step = steps[stepIndex]
@@ -48,6 +48,7 @@ function startTerminal() {
 		} else {
 			if (step && step.interaction) {
 				step.task && setTask(step.task);
+				step.action && step.action();
 				term.echoHelp(" ");
 				if (command) {				
 					var goToNextStep = step.interaction(command)
