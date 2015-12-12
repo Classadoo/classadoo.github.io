@@ -4,6 +4,7 @@
 
 .terminal-wrapper .command-input {
   outline: none;
+  color: gainsboro;
 }
 
 .terminal-wrapper .prompt {
@@ -40,52 +41,4 @@
 
 .terminal-wrapper .output-line {
   margin-bottom: 5px;
-}
-
-/*.console-cursor {
-    -webkit-animation: blink-button 1s infinite;
-       -moz-animation: blink-button 1s infinite; 
-        -ms-animation: blink-button 1s infinite;
-            animation: blink-button 1s infinite;
-}*/
-
-@keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb; /* not #aaa because it's seem there is Google Chrome bug */
-        color: #000;
-  }
-}
-@-webkit-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
-}
-@-ms-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
-}
-@-moz-keyframes blink-button {
-  0%, 100% {
-        background-color: #000;
-        color: #aaa;
-  }
-  50% {
-        background-color: #bbb;
-        color: #000;
-  }
 }

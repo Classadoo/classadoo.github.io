@@ -154,6 +154,10 @@
 	font-size: 24px;
 }
 
+.attr-highlight-style {
+	color: gold;
+}
+
 /*CONSOLE*/
 
 c {
