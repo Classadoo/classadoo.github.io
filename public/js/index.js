@@ -17,7 +17,7 @@ var term;
 
 var steps = []
 
-// steps = steps.concat(introSteps);
+steps = steps.concat(introSteps);
 steps = steps.concat(furnitureSteps);
 steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
@@ -28,7 +28,7 @@ function startTerminal() {
 	shadowElements = $(".example-dom").children();	
 	consoleEl = $(".console");
 
-	// overlayExamples()
+	// overlayHtmlExamples()
 	// overlayHtmlExamples();
 
 	term = new Terminal(consoleEl, function(command) {
@@ -73,17 +73,17 @@ function startTerminal() {
 			}               				
 		}		
     }, {
-        // greeting: "<div class='class-intro'>Welcome to your first classadoo tutorial. This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
-        prompt: "press enter or type <c>help</c>>"
+        greeting: "<div class='class-intro'>Welcome to your first classadoo tutorial. This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
+        prompt: "press enter or type <c>help</c>>",
+        enabled: false
     });	
-
-    openConsole();
 }
 
 function openConsole() {
 	consoleOpen = true;
 	$(".console-container").animate({ "height": "200px" }, { complete: function() { consoleEl.click(); } });	
 	$(".console-button").hide();
+	term.enable();
 	term.focus();
 }
 

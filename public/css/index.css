@@ -25,13 +25,12 @@
 	color: limegreen;
 	margin-top: 40px;
 	font-family: FreeMono, monospace;    	
-	cursor: pointer;
-	display: none;
+	cursor: pointer;	
 }
 
 .console-container {
 	padding: 0px;
-	/*height: 0px;*/
+	height: 0px;
 	overflow: hidden;
 }
 
@@ -165,5 +164,6 @@ c {
 }
 
 d {
-	color: darkorange;
+	color: rgba(230, 230, 230, .7);
+	text-decoration: underline;
 }
