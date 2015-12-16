@@ -17,7 +17,7 @@ var term;
 
 var steps = []
 
-// steps = steps.concat(introSteps);
+steps = steps.concat(introSteps);
 steps = steps.concat(furnitureSteps);
 steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 

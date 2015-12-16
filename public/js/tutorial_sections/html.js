@@ -209,6 +209,6 @@ htmlSteps = [
 		text: "You can make an online game, real time chat room, drawing tool, music player or more! Javascript and HTML are the tools that allow you to pursue your passions, online."		
 	},
 	{
-		text: "That's it for this tutorial! Check out our course offerings and email us at <a href='mailto:learn@classadoo.com'>learn@classadoo.com</a> if you are interested in hearing more about us."
+		interaction: "That's it for this tutorial! If you're interested in hearing more or scheduling a class "
 	}
 ]
