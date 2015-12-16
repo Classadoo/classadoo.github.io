@@ -44,7 +44,7 @@ namedElementSteps = [
 			} 
 			
 			if (!actionTaken) {
-				echo(term, "Try <c>banner left 100</c> or <c>links background red</c>");
+				echo(term, "Oops, not quite... try <c>banner left 100</c> or <c>links background red</c>");
 				return false
 			} else {
 				el.find(".example-overlay").remove();

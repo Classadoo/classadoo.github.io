@@ -42,11 +42,11 @@ Terminal = function (parent, cdmHandler, options) {
 	})
 
 	taskDisplay.css({
-		height: "4.5em"
+		"min-height": "4.5em"
 	})
 
 	helpDisplay.css({
-		height: "3em"
+		"min-height": "3em"
 	})
 
 	commandHistoryDisplay.css({

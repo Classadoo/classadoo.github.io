@@ -67,7 +67,7 @@ htmlSteps = [
 			} 
 			
 			if (!actionTaken) {
-				echo(term, "Try <c>heading left 100</c> or <c>links background red</c>.\nPossible backgrounds: " + validColors.join(", ") + "\nPossible directions: " + validDirections.join(" "));
+				echo(term, "Oops, not quite... try <c>heading left 100</c> or <c>links background red</c>");
 				return false
 			} else {
 				numberOfChanges += 1

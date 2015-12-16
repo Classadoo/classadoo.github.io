@@ -9,6 +9,7 @@ h4 {
 .logo-container {
 	margin-left: 20px;	
 	float: left;
+	border: 1px solid white;
 }
 
 .logo {
@@ -21,7 +22,7 @@ h4 {
 	float: right;
 	position: relative;	
 	top: 14px;
-	margin-right: 20px
+	margin-right: 20px;		
 }
 
 .nav-link {
@@ -67,6 +68,10 @@ h4 {
 		font-size: 25px;
 	}	
 
+	.intro-line-1 {
+		font-size: 90px;
+	}
+
 	.nav-links {
 		display: none;
 	}
@@ -81,7 +86,8 @@ h4 {
 	}
 
 	.logo-container {
-		float: right
+		float: right;
+		margin-right: 10px;
 	}
 
 	.dropdown-menu {
@@ -91,10 +97,6 @@ h4 {
 	.connect {
 		float: none;
 		font-size: 90px
-	}
-
-	.contact {
-		font-size: 12px
 	}
 
 	.footer {

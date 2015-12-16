@@ -26,8 +26,10 @@ furnitureSteps = [
 			term.changePrompt("enter command or type 'help'");							
 			if (cmd === "table right 100") {
 				var el = $("[example-name=table]");
-				el.css("right", "100");
-				term.echoHelp("Oh no, not my table!");							
+				el.css("right", "100");				
+				term.echoHelp("Oh no, not my table!", function() {
+					flash(el.find(".example-overlay"), 2);
+				});							
 				term.echoTask(" ");
 				term.changePrompt("press enter or type 'help'");
 				return true
@@ -44,7 +46,8 @@ furnitureSteps = [
 			// add the overlay showing the distance moved
 			var overlay = $("<div class='movement-example-overlay'>100 pixels</div>");
 			var el = $("[example-name=table]");			
-			$(el).append(overlay);			
+			$(el).append(overlay);		
+			flash(overlay, 2, function() { overlay.css("background", "") });	
 		}		
 	},
 	{

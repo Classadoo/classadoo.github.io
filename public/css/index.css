@@ -167,3 +167,9 @@ d {
 	color: rgba(230, 230, 230, .7);
 	text-decoration: underline;
 }
+
+@media (max-device-width: 480px) { 	
+	.console-button {
+		display: none;
+	}
+}
