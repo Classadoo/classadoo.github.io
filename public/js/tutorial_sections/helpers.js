@@ -1,5 +1,5 @@
 var validDirections = ["top", "right", "left", "bottom"]
-var validColors = ["blue", "red", "gray", "black", "white", "green", "yellow", "purple", "brown", "gold"]
+var validColors = ["blue", "red", "gray", "black", "white", "green", "yellow", "purple", "brown", "gold", "pink", "orange"]
 var numberOfChanges = 0;
 
 function overlayExamples() {	

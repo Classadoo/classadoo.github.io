@@ -26,7 +26,7 @@ htmlSteps = [
 			$(".content-highlight").css("color", "darkgray");
 			$(".example-overlay").css("background", "rgba(80, 80, 80, .95");
 		},
-		text: "Each of the elements which are highlighted are contained within a 'div'. Div is short for 'divider'. Divs are boxes that holds other content."
+		text: "Each of the elements which are highlighted are contained within a 'div'. Div is short for 'divider'. Divs are boxes that hold other content."
 	},
 	{
 		text: "For example the div with the id logo is holding the content 'Classadoo'",
@@ -95,7 +95,7 @@ htmlSteps = [
 
 	},
 	{
-		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. You can use this to make move things across a page, or make them blink.",			
+		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. You can use this to move things across a page, or make them blink.",
 	},
 	{
 		text: "Hit enter and I'll show a demonstration of this. Watch the HTML code for each element, and notice how each one's 'style' changes."		
@@ -181,7 +181,7 @@ htmlSteps = [
 	},
 	{
 		task: " ",
-		text: "In this case the changes to 'style' are being made by invisible code running on the page called Javascript. It's the same code that this tutorial is made of.",
+		text: "In this case the changes to 'style' are being made by invisible code running on the page called Javascript. It's the same type of code that this tutorial is made of.",
 		action: function () {
 			clearInterval(bannerInterval);
 			clearInterval(logoInterval);
@@ -206,9 +206,11 @@ htmlSteps = [
 		}
 	},
 	{
-		text: "You can make an online game, real time chat room, drawing tool, music player or more! Javascript and HTML are the tools that allow you to pursue your passions, online."		
+		text: "You can make an online game, drawing tool, music player or more! Javascript and HTML are the tools that allow you to pursue your passions, online."		
 	},
 	{
-		interaction: "That's it for this tutorial! If you're interested in hearing more or scheduling a class "
+		interaction: function(cmd) {
+
+		}
 	}
 ]

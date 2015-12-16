@@ -5,6 +5,7 @@
 .terminal-wrapper .command-input {
   outline: none;
   color: gainsboro;
+  min-width: 1px;
 }
 
 .terminal-wrapper .prompt {

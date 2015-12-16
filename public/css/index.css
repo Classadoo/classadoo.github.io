@@ -34,14 +34,11 @@
 	overflow: hidden;
 }
 
-.console {
+.console-container, .progress-container {
+	font-family: FreeMono, monospace;    	
 	color: limegreen;
 	text-align: left;	
 	font-size: 18px;	
-}
-
-.console-container {
-	font-family: FreeMono, monospace;    	
 }
 
 .class-intro {
@@ -150,11 +147,94 @@
 }
 
 .call-to-action {
-	font-size: 24px;
+	font-size: 18px;
 }
 
 .attr-highlight-style {
 	color: gold;
+}
+
+.class-title {
+	text-decoration: underline;
+	color: aqua;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+/*Progress Bar*/
+
+.progress-container {	
+	display: flex;	
+	margin-bottom: 20px;
+	margin-top: 20px
+}
+
+.progress-meter {
+	height: 20px;
+	border-right: 1px solid gainsboro;
+	border-left: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
+	background: none;
+	border-radius: 0px;
+}
+
+.progress-unit {
+  background-color: limegreen;
+  display: inline-block;
+  height: 100%;
+}
+
+.progress-label {
+	width: 10%;  
+  	color: aqua; 
+}
+
+.progress-cursor {	
+    -webkit-animation: blink 2s infinite;
+       -moz-animation: blink 2s infinite;
+        -ms-animation: blink 2s infinite;
+            animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+        background-color: #000;
+        color: #aaa;
+  }
+  50% {
+        background-color: #bbb; /* not #aaa because it's seem there is Google Chrome bug */
+        color: #000;
+  }
+}
+@-webkit-keyframes blink {
+  0%, 100% {
+        background-color: #000;
+        color: #aaa;
+  }
+  50% {
+        background-color: #bbb;
+        color: #000;
+  }
+}
+@-ms-keyframes blink {
+  0%, 100% {
+        background-color: #000;
+        color: #aaa;
+  }
+  50% {
+        background-color: #bbb;
+        color: #000;
+  }
+}
+@-moz-keyframes blink {
+  0%, 100% {
+        background-color: #000;
+        color: #aaa;
+  }
+  50% {
+        background-color: #bbb;
+        color: #000;
+  }
 }
 
 /*CONSOLE*/

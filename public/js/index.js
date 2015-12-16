@@ -44,7 +44,7 @@ function startTerminal() {
 				term.echoHelp("Press your enter key to move on to the next step!");
 			}
 
-			if (step.helpTutorial) stepIndex += 1
+			if (step.helpTutorial) nextStep()
 		} else {
 			if (step && step.interaction) {
 				step.task && setTask(step.task);
@@ -53,7 +53,7 @@ function startTerminal() {
 				if (command) {				
 					var goToNextStep = step.interaction(command)
 					if (goToNextStep) {
-						stepIndex += 1
+						nextStep()	
 					}
 				} 
 			} else if (step) {		
@@ -69,19 +69,30 @@ function startTerminal() {
 					step.action && step.action();		
 				}
 
-				stepIndex += 1		
+				nextStep()				
 			}               				
 		}		
     }, {
-        greeting: "<div class='class-intro'>Welcome to your first classadoo tutorial. This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
+        // greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
         prompt: "press enter or type <c>help</c>>",
         enabled: false
     });	
+
+	var progressBar = new ProgressBar($(".progress-bar-container"), steps.length);
+	openConsole()
+
+	function nextStep() {
+		stepIndex += 1;
+		progressBar.incrementProgress();
+	}
 }
+
+
 
 function openConsole() {
 	consoleOpen = true;
-	$(".console-container").animate({ "height": "200px" }, { complete: function() { consoleEl.click(); } });	
+	var consoleContainer = $(".console-container")
+	consoleContainer.animate({ "height":  consoleContainer[0].scrollHeight }, { complete: function() { consoleEl.click(); } });	
 	$(".console-button").hide();
 	term.enable();
 	term.focus();
@@ -91,3 +102,53 @@ $(function() {
 	startTerminal();
 	$(".console-button").click(openConsole);	
 })
+
+ProgressBar = function(parent, numberOfSteps) {
+	var self = this 
+	var progressBarContainer = $("<div class='progress-meter'>");
+	var unit = $("<div class='progress-unit'>");
+	var cursor = $("<div class='progress-cursor progress-unit'>");
+
+	var unitWidth = 10;
+
+	unit.css({ 
+		width: unitWidth
+	})	
+
+	cursor.css({ 
+		width: unitWidth
+	})	
+
+	progressBarContainer.css({
+		width: unitWidth * (numberOfSteps + 1)
+	})
+
+	parent.append(progressBarContainer.append(cursor));
+
+	self.incrementProgress = function () {
+		progressBarContainer.prepend(unit.clone());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
