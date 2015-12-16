@@ -78,8 +78,7 @@ function startTerminal() {
         enabled: false
     });	
 
-	var progressBar = new ProgressBar($(".progress-bar-container"), steps.length);
-	openConsole()
+	var progressBar = new ProgressBar($(".progress-bar-container"), steps.length);	
 
 	function nextStep() {
 		stepIndex += 1;
