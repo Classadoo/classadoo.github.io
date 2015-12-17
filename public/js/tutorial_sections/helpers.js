@@ -126,3 +126,16 @@ function setTask(task) {
 function setSection(sectionName) {
 	$(".section-name").html(sectionName);
 }
+
+function sendEmail(emailAddress) {
+	$.ajax({
+		type: "post",
+		url: "//formspree.io/learn@classadoo.com",
+		data: {
+			email_address: emailAddress			
+		},
+		success: function(resp) {
+			console.log("email response is", resp);
+		}
+	})
+}
