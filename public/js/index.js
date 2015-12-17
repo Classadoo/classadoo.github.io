@@ -19,7 +19,7 @@ var steps = []
 
 // steps = steps.concat(introSteps);
 // steps = steps.concat(furnitureSteps);
-steps = steps.concat(namedElementSteps);
+// steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
 
 function startTerminal() {
@@ -185,24 +185,3 @@ ProgressBar = function(parent, size) {
 		progressBarContainer.prepend(unit.clone());
 	}	
 }
-
-function sendEmail(emailAddress) {
-	$.ajax({
-		type: "post",
-		url: "//formspree.io/learn@classadoo.com",
-		data: {
-			name: "Classadoo",
-			_replyto: emailAddress
-		},
-		success: function(resp) {
-			console.log("email response is", resp);
-		}
-	})
-}
-
-
-
-
-
-
-
