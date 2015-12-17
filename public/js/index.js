@@ -17,9 +17,9 @@ var term;
 
 var steps = []
 
-// steps = steps.concat(introSteps);
-// steps = steps.concat(furnitureSteps);
-// steps = steps.concat(namedElementSteps);
+steps = steps.concat(introSteps);
+steps = steps.concat(furnitureSteps);
+steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
 
 function startTerminal() {
@@ -29,7 +29,7 @@ function startTerminal() {
 	consoleEl = $(".console");
 	var progressContainer = $(".progress-container");
 
-	overlayExamples()
+	// overlayExamples()
 	// overlayHtmlExamples();
 
 	term = new Terminal(consoleEl, function(command) {
@@ -88,7 +88,7 @@ function startTerminal() {
     });	
 
 	var progressBar = new ProgressBar($(".progress-bar-container"), 400);	
-	openConsole();
+	// openConsole();
 
 	function nextStep(step) {
 		stepIndex += 1;

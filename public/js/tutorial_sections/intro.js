@@ -10,10 +10,10 @@ var introSteps = [
 		text: "Instructions and help will appear here in the 'help' section. To move on to the next instruction press enter at any time.",
 	},
 	{
-		text: "Classadoo lessons are based around inquiry. During each section of this tutorial we we will trying to discover an answer to a question."
+		text: "Classadoo lessons are based around inquiry. Throughout the tutorial we will discover answers to different questions."
 	},
 	{
-		text: "The question we are currently working on will be shown in the question display, along with our progress towards answering that question.",
+		text: "The question we are currently working is shown in the question display, along with our progress towards answering that question.",
 		action: function() {
 			var progressContainer = $(".progress-container");
 			flash(progressContainer, 2, function () { 
@@ -67,7 +67,8 @@ var introSteps = [
 		help: "Try typing something like <c>set-name David</c>. This will tell the tutorial the name you'd like to use."
 	},
 	{
-		text: "Ok, let's get started!",
-		task: " "
-	}
+		task: " ",
+		text: "Awesome, now you know how the tutorial works, so we've solved our first question! Hit enter when you're ready to continue.",
+		questionComplete: true
+	}	
 ]
