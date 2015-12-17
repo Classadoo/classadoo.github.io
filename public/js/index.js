@@ -188,6 +188,7 @@ ProgressBar = function(parent, size) {
 
 function sendEmail(emailAddress) {
 	$.ajax({
+		type: "post",
 		url: "//formspree.io/learn@classadoo.com",
 		data: {
 			name: "Classadoo",
