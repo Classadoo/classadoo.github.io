@@ -185,3 +185,23 @@ ProgressBar = function(parent, size) {
 		progressBarContainer.prepend(unit.clone());
 	}	
 }
+
+function sendEmail(emailAddress) {
+	$.ajax({
+		url: "//formspree.io/learn@classadoo.com",
+		data: {
+			name: "Classadoo",
+			_replyto: emailAddress
+		},
+		success: function(resp) {
+			console.log("email response is", resp);
+		}
+	})
+}
+
+
+
+
+
+
+
