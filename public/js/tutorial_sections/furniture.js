@@ -45,7 +45,7 @@ furnitureSteps = [
 		text: "Like in any room, I've carefully chosen, arranged and HAND painted all the furniture on this page."	
 	},		
 	{
-		text: "But that doesn't mean it couldn't do with makeover...let's try moving some things around!"
+		text: "But I think it needs a makeover...let's try moving some things around!"
 	},
 	{
 		task: "Try moving the table by typing <c>table right 200</c> and pressing enter.",
@@ -54,7 +54,7 @@ furnitureSteps = [
 			if (cmd === "table right 200") {
 				var el = $("[example-name=table]");
 				el.css("right", "200");				
-				term.echoHelp("Oh no, not my table!", function() {
+				term.echoHelp("Oh, wow, very nice positioning.", function() {
 					flash(el.find(".example-overlay"), 2);
 				});							
 				term.echoTask(" ");
@@ -140,10 +140,10 @@ furnitureSteps = [
 		}
 	},
 	{
-		text: "So I think we can now answer our first question!:"
+		text: "So I think we can now answer our second question!:"
 	},
 	{
 		questionComplete: true,
-		text: "<e>This webpage's look was created by arranging things (like furniture) on the page, using commands like <c>table right 100</c>.</e> or <c>counter background blue</c>"
+		text: "<e>This webpage's look was created by arranging things (like furniture) on the page, using commands like <c>table right 100</c> or <c>counter background blue</c>.</e>"
 	}	
 ]
