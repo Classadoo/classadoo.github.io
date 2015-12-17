@@ -9,7 +9,7 @@
 }
 
 .intro-container {
-	background: black;  
+	background: #333333;  
   	padding: 50px 20px 50px 20px;
   	/*margin-bottom: 60px;*/
   	margin-top: 40px;
@@ -32,6 +32,9 @@
 	padding: 0px;
 	height: 0px;
 	overflow: hidden;
+	position: relative;
+	z-index: 4000;
+	background: #333333;  
 }
 
 .console-container, .progress-container {
