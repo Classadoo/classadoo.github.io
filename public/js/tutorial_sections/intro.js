@@ -7,7 +7,7 @@ var introSteps = [
 		text: "In this lesson you will learn how a webpage works, using THIS webpage as an example."
 	},
 	{
-		text: "Instructions and help will appear here in the 'help' section. To move on to the next instruction press enter at any time",
+		text: "Instructions and help will appear here in the 'help' section. To move on to the next instruction press enter at any time.",
 	},
 	{
 		text: "Classadoo lessons are based around inquiry. During each section of this tutorial we we will trying to discover an answer to a question."

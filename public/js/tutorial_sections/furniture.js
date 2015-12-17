@@ -1,33 +1,59 @@
 furnitureSteps = [
 	{
 		text: "This is the classadoo webpage.",
-		section: "Why does this web page look that way it does?"
-	},
-	{
-		text: "You might notice it doesn't look like Facebook, or CNN.com. Each page, including this one has it's own look."
-	},
-	{
-		text: "When we created this webpage, we created it to look exactly the way we wanted. So how did we do that?"
+		section: "Why does this webpage look the way it does?"
 	},	
 	{
-		text: "Well imagine this webpage is like a room in your house, and all the things you see are like furniture."
+		text: "When I created this webpage, I created it to look exactly the way you see. So how did I do that?"
 	},	
 	{
-		text: "The table big banner is like a table",
+		text: "Well imagine this webpage is like a room, and all the things you see are like furniture."
+	},	
+	{
+		text: "The big banner is like a table.",
 		action: function() {	
-			overlayExamples()
+			var overlay = overlayFurnitureExample("table");
+			flash(overlay, 2);
 		}
 	},
 	{
-		text: "Like furniture in a room, I've carefully arranged and HAND painted EVERYTHING on this page."	
-	},	
+		text: "Our logo is like a cabinet.",
+		action: function() {	
+			var overlay = overlayFurnitureExample("cabinet");
+			flash(overlay, 2);
+		}
+	},
 	{
-		task: "It would be TERRIBLE if you were to move the table by typing <c>table right 100</c> and pressing enter.",
+		text: "The links are like a counter.",
+		action: function() {	
+			var overlay = overlayFurnitureExample("counter");
+			flash(overlay, 2);
+		}
+	},
+	{
+		text: "And the explanations below are like chairs.",
+		action: function() {	
+			var overlay1 = overlayFurnitureExample("chair1");
+			var overlay2 = overlayFurnitureExample("chair2");
+			var overlay3 = overlayFurnitureExample("chair3");
+			flash(overlay1, 2);
+			flash(overlay2, 2);
+			flash(overlay3, 2);
+		}
+	},
+	{
+		text: "Like in any room, I've carefully chosen, arranged and HAND painted all the furniture on this page."	
+	},		
+	{
+		text: "But that doesn't mean it couldn't do with makeover...let's try moving some things around!"
+	},
+	{
+		task: "Try moving the table by typing <c>table right 200</c> and pressing enter.",
 		interaction: function(cmd) {
 			term.changePrompt("enter command or type 'help'");							
-			if (cmd === "table right 100") {
+			if (cmd === "table right 200") {
 				var el = $("[example-name=table]");
-				el.css("right", "100");				
+				el.css("right", "200");				
 				term.echoHelp("Oh no, not my table!", function() {
 					flash(el.find(".example-overlay"), 2);
 				});							
@@ -35,17 +61,17 @@ furnitureSteps = [
 				term.changePrompt("press enter or type 'help'");
 				return true
 			} else {
-				term.echoHelp("Almost. You typed <c>" + cmd + "</c>, but for this task you need to type exactly <c>table right 100</c>.")
+				term.echoHelp("Almost. You typed <c>" + cmd + "</c>, but for this task you need to type exactly <c>table right 200</c>.")
 				return false				
 			}							
 		},
-		help: "Try typing exactly this: <c>table right 100</c>. Then press enter to input that command."	
+		help: "Try typing exactly this: <c>table right 200</c>. Then press enter to input that command."	
 	},
 	{
-		text: "What just happened is that you told your browser to push the table's right edge until it was 100 pixels from it's starting location.",
+		text: "What just happened is that you told your computer to push the table's right edge until it was 200 pixels from it's starting location.",
 		action: function() {
 			// add the overlay showing the distance moved
-			var overlay = $("<div class='movement-example-overlay'>100 pixels</div>");
+			var overlay = $("<div class='movement-example-overlay'>200 pixels</div>");
 			var el = $("[example-name=table]");			
 			$(el).append(overlay);		
 			flash(overlay, 2, function() { overlay.css("background", "") });	
@@ -56,7 +82,7 @@ furnitureSteps = [
 	},
 	{
 		text: "So the whole table actually moved LEFT, because you pushed the RIGHT edge.",
-		help: "Imagine if I told you to push a table from the right side, 100 inches. By tying <c>table right 100</c> you are telling the broswer to do just that, but it thinks in pixels instead of inches."
+		help: "Imagine if I told you to push a table from the right side, 200 inches. By tying <c>table right 200</c> you are telling the computer to do just that, but it thinks in pixels instead of inches."
 	},
 	{	
 		action: function () {
@@ -112,5 +138,12 @@ furnitureSteps = [
 			$(".no-img").hide();			
 			resetWithOverlays()
 		}
-	}
+	},
+	{
+		text: "So I think we can now answer our first question!:"
+	},
+	{
+		questionComplete: true,
+		text: "<e>This webpage's look was created by arranging things (like furniture) on the page, using commands like <c>table right 100</c>.</e> or <c>counter background blue</c>"
+	}	
 ]

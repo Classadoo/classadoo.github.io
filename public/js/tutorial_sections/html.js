@@ -7,26 +7,26 @@ var pitch3Interval;
 
 htmlSteps = [
 	{
-		task: " ",
-		text: "Now, the commands you wrote before are just fine for changing elements that are already on a page, but how do they get there in the first place?",
+		section: "How do elements get onto a page?",
+		text: "So our next question is: How do elements get on the page in the first place?",
 		action: resetWithOverlays
 	},
 	{
-		text: "When you go to a website your browser is given some code which specifies how the page should look. This code is called HTML.",
+		text: "When you go to a website your computer is given the website's code, called HTML. The code tells your computer what elements should be on the page.",
 	},
 	{
-		text: "So the browser knows to show the elements you worked with before, based on html, which looks like this.",
+		text: "The HTML code for this website looks like this:",
 		action: function() {
 			overlayHtmlExamples();
 			flashOverlays(2);
 		}
-	},
+	},	
 	{
 		beforeAction: function() {
 			$(".content-highlight").css("color", "darkgray");
 			$(".example-overlay").css("background", "rgba(80, 80, 80, .95");
 		},
-		text: "Each of the elements which are highlighted are contained within a 'div'. Div is short for 'divider'. Divs are boxes that hold other content."
+		text: "Each of the elements we've been working with are contained within a 'div'. Div is short for 'divider'. Divs are boxes that hold other content."
 	},
 	{
 		text: "For example the div with the id logo is holding the content 'Classadoo'",
@@ -39,6 +39,14 @@ htmlSteps = [
 		action: function() {
 			flash($(".attr-highlight-id"), 2, function() { $(".attr-highlight-id").css("color", "red") });
 		}
+	},
+	{
+		questionComplete: true,
+		text: "<e>So now we know that elements are placed on a page by HTML code, like what you see here.</e>"
+	},
+	{
+		section: "What does the code look like when we move an element?",
+		text: "However, what happens to the HTML when we start moving elements around again?"
 	},
 	{
 		task: "Try moving around elements again, or changing their backgrounds, using commands like <c>banner right 100</c> or <c>logo background blue</c>. See how each div's code changes. Let's make 3 changes.",
@@ -95,7 +103,10 @@ htmlSteps = [
 
 	},
 	{
-		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. You can use this to move things across a page, or make them blink.",
+		text: "Whenever you see something change on a webpage, it's because an element's 'style' attribute is being changed. Throughout this tutorial you've been changing the style of each element.",
+	},
+	{
+		text: "By changing an element's style, you can move things across a page, make them blink or more."
 	},
 	{
 		text: "Hit enter and I'll show a demonstration of this. Watch the HTML code for each element, and notice how each one's 'style' changes."		
@@ -149,9 +160,9 @@ htmlSteps = [
 
 			pitch1Interval = setInterval(function() {
 				if (pitch1Red) {
-					style("pitch-1", { background: "red" });	
+					style("text1", { background: "red" });	
 				} else {
-					style("pitch-1", {background: "grey"})
+					style("text1", {background: "grey"})
 				}
 				
 				pitch1Red = !pitch1Red				
@@ -159,9 +170,9 @@ htmlSteps = [
 
 			pitch2Interval = setInterval(function() {
 				if (pitch2Left) {
-					style("pitch-2", { left: "40px" });	
+					style("text2", { left: "40px" });	
 				} else {
-					style("pitch-2", {left: "-40px"})
+					style("text2", {left: "-40px"})
 				}
 				
 				pitch2Left = !pitch2Left				
@@ -169,9 +180,9 @@ htmlSteps = [
 
 			pitch3Interval = setInterval(function() {
 				if (pitch3Yellow) {
-					style("pitch-3", { background: "yellow" });	
+					style("text3", { background: "yellow" });	
 				} else {
-					style("pitch-3", { background: "teal"});
+					style("text3", { background: "teal"});
 				}
 				
 				pitch3Yellow = !pitch3Yellow				
@@ -193,9 +204,9 @@ htmlSteps = [
 				style("logo", {background: ""});
 				style("banner", {right: ""});
 				style("links", {top: ""});
-				style("pitch-1", { background: "" })
-				style("pitch-2", { left: "" })
-				style("pitch-3", { background: "" })	
+				style("text1", { background: "" })
+				style("text2", { left: "" })
+				style("text3", { background: "" })	
 			}, 1000)
 		}		
 	},
@@ -209,8 +220,34 @@ htmlSteps = [
 		text: "You can make an online game, drawing tool, music player or more! Javascript and HTML are the tools that allow you to pursue your passions, online."		
 	},
 	{
-		interaction: function(cmd) {
-
-		}
+		text: "This is the end of this tutorial, but let's recap what we learned:"
+	},
+	{
+		text: "A webpage is like a room, and everything inside it is like furniture. Like furniture you can arrange the things in a webpage in any way you like."
+	},
+	{
+		text: "All these \"things\" on a webpage are called elements. Each element has a name, which we use to change how it looks.",
+	},
+	{
+		text: "Elements are put onto a page by code called HTML.",
+	},
+	{
+		questionComplete: true,
+		text: "<e>And to answer our final question: by changing the 'style' of each element, in code, we can change the way an element looks.</e>"
+	},		
+	{		
+		section: "What's next?",
+		noProgress: true,
+		task: "That's it for now! If you're interested in scheduling a full class with us, <c>just type in your email address now</c>, and we'll get back to you within a day.",		
+		interaction: function(cmd) {	
+			console.log("email", cmd);
+			term.echoHelp("Thanks, we'll be in touch soon!");
+			return true
+		},
+		help: "Type in your email address and press enter, if you'd like more info, or to schedule a class."
+	},
+	{
+		noProgress: true,
+		task: " "
 	}
 ]

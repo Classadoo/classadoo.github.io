@@ -17,8 +17,8 @@ var term;
 
 var steps = []
 
-steps = steps.concat(introSteps);
-steps = steps.concat(furnitureSteps);
+// steps = steps.concat(introSteps);
+// steps = steps.concat(furnitureSteps);
 steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
 
@@ -27,11 +27,13 @@ function startTerminal() {
 	exampleElements = $(".example-element")
 	shadowElements = $(".example-dom").children();	
 	consoleEl = $(".console");
+	var progressContainer = $(".progress-container");
 
-	// overlayHtmlExamples()
+	overlayExamples()
 	// overlayHtmlExamples();
 
 	term = new Terminal(consoleEl, function(command) {
+		progressContainer.css("visibility", "visible");
 		var step = steps[stepIndex]
 		if (command === "help" || command === "'help'") {			
 			if (step && step.help && step.interaction){
@@ -44,10 +46,14 @@ function startTerminal() {
 				term.echoHelp("Press your enter key to move on to the next step!");
 			}
 
-			if (step.helpTutorial) nextStep()
+			if (step.helpTutorial) nextStep(step)
 		} else {
 			if (step) {
-				step.section && newSection(step.section);
+				newSection(step);
+
+				if (step.questionComplete) {					
+					progressBar.complete();
+				}
 
 				if (step.interaction) {
 					step.task && setTask(step.task);
@@ -56,7 +62,7 @@ function startTerminal() {
 					if (command) {				
 						var goToNextStep = step.interaction(command)
 						if (goToNextStep) {
-							nextStep()	
+							nextStep(step)	
 						}
 					} 	
 				} else {					
@@ -71,12 +77,12 @@ function startTerminal() {
 						step.action && step.action();		
 					}
 
-					nextStep()				
+					nextStep(step)				
 				}
 			} 
 		}		
     }, {
-        // greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
+        greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is a 10 minute example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
         prompt: "press enter or type <c>help</c>>",
         enabled: false
     });	
@@ -84,21 +90,28 @@ function startTerminal() {
 	var progressBar = new ProgressBar($(".progress-bar-container"), 400);	
 	openConsole();
 
-	function nextStep() {
+	function nextStep(step) {
 		stepIndex += 1;
-		progressBar.incrementProgress();
+		step.section || step.noProgress || progressBar.incrementProgress();
 	}
 
-	function newSection(sectionName) {		
-		var numberOfSteps = steps.length - stepIndex;
-		$.each(steps.slice(stepIndex + 1), function(i, step) {			
-			if (step.section) {				
-				numberOfSteps = i + 1;
-				return false
-			} 
-		});		
-		setSection(sectionName);		
-		progressBar.reset(numberOfSteps);
+	function newSection(step) {		
+		if (step.section) {
+			var numberOfSteps = steps.length - stepIndex;
+			$.each(steps.slice(stepIndex + 1), function(i, step) {			
+				if (step.section) {				
+					numberOfSteps = i + 1;
+					return false
+				} 
+			});		
+			setSection(step.section);								
+
+			if (step.noProgress) {
+				progressBar.clearProgress();
+			} else {
+				progressBar.reset(numberOfSteps);
+			}
+		}
 	}
 }
 
@@ -123,22 +136,47 @@ ProgressBar = function(parent, size) {
 	var progressBarContainer = $("<div class='progress-meter'>");
 	var unit = $("<div class='progress-unit'>");
 	var cursor = $("<div class='first-progress progress-unit'>");
+	var completeOverlay = $("<div class='complete-overlay'>Answered!</div>");
+	var numberOfFlashes;
 
 	progressBarContainer.css("width", size);	
 
-	parent.append(progressBarContainer);
+	parent.append(progressBarContainer).append(completeOverlay);
 
-	function clearProgress() {
+	self.complete = function() {
+		numberOfFlashes = 0;
+		flash();
+		function flash() {
+			completeOverlay.show();
+			setTimeout(function() {
+				completeOverlay.hide()
+				numberOfFlashes += 1
+
+				if (numberOfFlashes < 0) {
+					// do nothing, the flashing has been cancelled
+				} else if (numberOfFlashes < 3) {
+					setTimeout(flash, 400);
+				} else {
+					completeOverlay.show();
+				}
+			}, 400)
+		}		
+	}
+
+	self.clearProgress = function() {
 		progressBarContainer.html("");
 	}
 
 	self.reset = function(newNumberOfSteps) {
-		clearProgress()
+		// we just need a weird number here, so we can recognize and stop the flashing
+		numberOfFlashes = -100;
+		completeOverlay.hide();
+		self.clearProgress()
 		unit.css({ 
-			width: (100 / (newNumberOfSteps + 1)) + "%"
+			width: (100 / (newNumberOfSteps)) + "%"
 		})	
 		cursor.css({ 
-			width: (100 / (newNumberOfSteps + 1)) + "%"
+			width: (100 / (newNumberOfSteps)) + "%"
 		})					
 		progressBarContainer.append(cursor.clone());					
 	}

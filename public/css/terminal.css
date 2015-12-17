@@ -1,3 +1,7 @@
+.terminal-wrapper {
+  position: relative;
+}
+
 .terminal-wrapper .display {
   overflow: hidden;
 }
@@ -36,8 +40,11 @@
 }
 
 .terminal-wrapper .greeting {
-  width: 80%;
-  margin-left: 10%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .terminal-wrapper .output-line {

@@ -1,11 +1,18 @@
 var validDirections = ["top", "right", "left", "bottom"]
-var validColors = ["blue", "red", "gray", "black", "white", "green", "yellow", "purple", "brown", "gold", "pink", "orange"]
+var validColors = ["blue", "red", "gray", "black", "white", "green", "yellow", "purple", "brown", "gold", "pink", "orange", "silver"]
 var numberOfChanges = 0;
+
+function overlayFurnitureExample(furnitureName) {
+	var el = $("[example-name=" + furnitureName + "]")
+	el.css({"position": "relative"})
+	var overlay = $("<div class='example-overlay'><div class='example-name'>" + furnitureName + "</div></div>");
+	el.append(overlay);
+	return overlay
+}
 
 function overlayExamples() {	
 	exampleElements.each(function(i, el) {				
-		$(el).css({"position": "relative"})
-		var name = name ||
+		$(el).css({"position": "relative"})		
 		$(el).append("<div class='example-overlay'><div class='example-name'>" + $(el).attr("example-name") + "</div></div>");
 	})
 }

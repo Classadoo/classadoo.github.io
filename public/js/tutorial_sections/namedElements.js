@@ -1,12 +1,10 @@
-namedElementSteps = [
+namedElementSteps = [	
 	{
-		text: "OK, so now I think we have an answer to our first question: "
+		section: 'What are the "things" that make up a webpage?',
+		text: 'But now we have a new question: If the "things" we\'re arranging aren\'t really furniture, what are they?'
 	},
 	{
-		text: "A web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <c>table background blue</c>."
-	},
-	{
-		text: "In the software world we call these 'things', elements.",
+		text: "In the software world we call these \"things\", elements.",
 		action: function() {
 			$(".example-name").html("element");
 			setTimeout(function() { flashOverlays(2) }, 500);
@@ -22,7 +20,7 @@ namedElementSteps = [
 		}	
 	},
 	{	
-		task: "Try changing the layout or background of each element, using their new names.<br>Examples: <c>banner <d>edge</d> <d>distance</d></c> or <c>links background <d>color</d></c>. <d>edge</d> can be top, right, bottom, or left, <d>distance</d> can be any number, and <d>color</d> can be any primary color.",
+		task: "Try changing the layout or background of each element again, using their new names.<br>Examples: <c>banner <d>top, right, bottom, or left</d> <d>distance</d></c> or <c>links background <d>color</d></c>.",
 		interaction: function(cmd) {			
 			var args = cmd.split(" ")
 			var id = args[0];
@@ -41,17 +39,21 @@ namedElementSteps = [
 						actionTaken = true;
 					} 
 				} else if (validDirections.indexOf(command) > -1) {
+					el.css({top: "", right: "", left: "", bottom: ""});
 					el.css(command, arg); 														
 					actionTaken = true;
 				} 										
 			} 
 			
 			if (!actionTaken) {
-				echo(term, "Oops, not quite... try <c>banner left 100</c> or <c>links background red</c>");
+				echo(term, "Oops, not quite... try something like <c>banner left 100</c> or <c>links background red</c>. You can use any primary color as a background.");
 				return false
 			} else {
-				el.find(".example-overlay").remove();
-				var exampleOverlays = $(".example-overlay");				
+				var overlay = el.find(".example-overlay");
+				overlay.addClass("flashing");
+				flash(overlay, 2, function () { overlay.remove() });
+
+				var exampleOverlays = $(".example-overlay:not(.flashing)");				
 				var numberRemainingElementsToMove = exampleOverlays.length
 				var remainingNames = exampleOverlays.map(function(i, el) { return $(el).parent().attr("example-id") } ).toArray()
 				if (numberRemainingElementsToMove){
@@ -60,12 +62,20 @@ namedElementSteps = [
 					return false
 				} else {
 					// all elements have been moved, go to the next step
-					echo(term, "Great, nice redesign!")
+					echo(term, "Nice job! You can now officially put \"web designer\" on your resum&egrave;.")
 					return true
 				}
 			}
 					
 		},
 		help: "To complete this step make at least one change to every element that has a name. You can change their background or push the elements around."
+	},	
+	{
+		task: " ",
+		text: "So now we can answer our second question:"
+	},
+	{
+		questionComplete: true,
+		text: "<e>Everything on a webpage is an element, with names. We can use these names to change the way elements look.<e>"
 	}
 ]

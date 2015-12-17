@@ -94,10 +94,10 @@ Terminal = function (parent, cdmHandler, options) {
 	function showGreeting(greeting) {
 		greetingEl = $("<div class='greeting'>" + greeting + "</div>")
 		displayWrapper.append(greetingEl);
-		commandHistoryWrapper.hide();
-		taskWrapper.hide();
-		helpWrapper.hide()		
-		commandInputWrapper.hide();
+		commandHistoryWrapper.css("visibility", "hidden");
+		taskWrapper.css("visibility", "hidden");
+		helpWrapper.css("visibility", "hidden")		
+		commandInputWrapper.css("visibility", "hidden");
 
 		function respondToKeydown(e) {
 			if (e.keyCode === 13 && enabled) {										
@@ -114,10 +114,10 @@ Terminal = function (parent, cdmHandler, options) {
 
 	function clearGreeting() {
 		greetingEl.remove()
-		taskWrapper.show();
-		commandHistoryWrapper.show();
-		helpWrapper.show()
-		commandInputWrapper.show()
+		taskWrapper.css("visibility", "visible");
+		commandHistoryWrapper.css("visibility", "visible");
+		helpWrapper.css("visibility", "visible")
+		commandInputWrapper.css("visibility", "visible")
 	}
 
 	self.echoTask = function(text) {

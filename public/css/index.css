@@ -110,14 +110,14 @@
 .movement-example-overlay {
 	position: absolute;
 	top: 0px;
-	right: -100px;
+	right: -200px;
 	z-index: 1500;
 	background: red;
 	color: black;
 	text-align: center;
 	font-size: 18px;
 	height: 100%;
-	width: 100px;
+	width: 200px;
 	border-left: 5px solid white;
 }
 
@@ -163,10 +163,15 @@
 
 /*Progress Bar*/
 
-.progress-container {	
-	display: flex;	
+.progress-container {
+	display: flex;
 	margin-bottom: 20px;
-	margin-top: 20px;	
+	margin-top: 20px;
+	visibility: hidden;
+}
+
+.progress-bar-container {
+	position: relative;
 }
 
 .progress-meter {
@@ -187,7 +192,7 @@
 }
 
 .progress-unit {
-  background-color: limegreen;  
+  background-color: rgb(70, 70, 70);  
   height: 100%;
   display: inline-block;
 }
@@ -203,7 +208,14 @@
 	display: inline-block;
 }
 
-
+.complete-overlay {
+	position: absolute;
+	text-align: center;
+	color: orange;
+	display: none;
+	top: 0;
+	width: 100%;
+}
 
 .first-progress {	
     border-right: 2px solid #bbb;
@@ -251,6 +263,10 @@ c {
 d {
 	color: rgba(230, 230, 230, .7);
 	text-decoration: underline;
+}
+
+e {
+	color: orange;
 }
 
 @media (max-device-width: 480px) { 	
