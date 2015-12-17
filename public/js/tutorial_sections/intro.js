@@ -1,6 +1,7 @@
-var introSteps = [
+var introSteps = [	
 	{
-		text: "Welcome to the tutorial! Press enter to continue..."
+		text: "Welcome to the tutorial! Press enter to continue...",
+		section: "How does this tutorial work?"
 	},
 	{
 		text: "In this lesson you will learn how a webpage works, using THIS webpage as an example."
@@ -9,7 +10,19 @@ var introSteps = [
 		text: "Instructions and help will appear here in the 'help' section. To move on to the next instruction press enter at any time",
 	},
 	{
-		task: "During the tutorial you will be given 'tasks' to complete. Your current task (if there is one) will appear here.",	
+		text: "Classadoo lessons are based around inquiry. During each section of this tutorial we we will trying to discover an answer to a question."
+	},
+	{
+		text: "The question we are currently working on will be shown in the question display, along with our progress towards answering that question.",
+		action: function() {
+			var progressContainer = $(".progress-container");
+			flash(progressContainer, 2, function () { 
+				progressContainer.css("background", "") 				
+			})
+		}
+	},	
+	{
+		task: "As we work towards answers, you will be given 'tasks' to complete. Your current task (if there is one) will appear here.",	
 	},
 	{
 		task: " ",
@@ -17,10 +30,10 @@ var introSteps = [
 	},
 	{
 		task: "",
-		text: "If at any point you feel confused, just type <c>help</c>, and press enter. Let's try this now!"
+		text: "If at any point you feel confused, just type <c>help</c>, and press enter."
 	},	
 	{
-		task: "Type <c>help</c> and press enter.",
+		task: " Let's try this now! Type <c>help</c> and press enter.",
 		help: "Great! Notice that the word <c>help</c> is highlighted white. Anything highlighted white is an example command which you can type into the prompt.",
 		// this is just to tell the command processor to move on after help is typed.
 		helpTutorial: true,

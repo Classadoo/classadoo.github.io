@@ -166,22 +166,30 @@
 .progress-container {	
 	display: flex;	
 	margin-bottom: 20px;
-	margin-top: 20px
+	margin-top: 20px;	
 }
 
 .progress-meter {
-	height: 20px;
+	height: 1em;
 	border-right: 1px solid gainsboro;
 	border-left: 1px solid gainsboro;
 	border-bottom: 1px solid gainsboro;
+	border-top: 1px solid gainsboro;
 	background: none;
-	border-radius: 0px;
+	border-radius: 0px;	
+	position: relative;
+	top: .25em;	
+}
+
+.progress-display {	
+	display: flex;
+	width: 80%;
 }
 
 .progress-unit {
-  background-color: limegreen;
-  display: inline-block;
+  background-color: limegreen;  
   height: 100%;
+  display: inline-block;
 }
 
 .progress-label {
@@ -189,51 +197,48 @@
   	color: aqua; 
 }
 
-.progress-cursor {	
-    -webkit-animation: blink 2s infinite;
-       -moz-animation: blink 2s infinite;
-        -ms-animation: blink 2s infinite;
-            animation: blink 2s infinite;
+.section-name {
+	width: 70%;
+	color: orange; 
+	display: inline-block;
+}
+
+
+
+.first-progress {	
+    border-right: 2px solid #bbb;
 }
 
 @keyframes blink {
   0%, 100% {
-        background-color: #000;
-        color: #aaa;
+        background-color: #333;        
   }
   50% {
-        background-color: #bbb; /* not #aaa because it's seem there is Google Chrome bug */
-        color: #000;
+        background-color: #bbb; /* not #aaa because it's seem there is Google Chrome bug */   
   }
 }
 @-webkit-keyframes blink {
   0%, 100% {
-        background-color: #000;
-        color: #aaa;
+        background-color: #000;   
   }
   50% {
-        background-color: #bbb;
-        color: #000;
+        background-color: #bbb;   
   }
 }
 @-ms-keyframes blink {
   0%, 100% {
-        background-color: #000;
-        color: #aaa;
+        background-color: #000;        
   }
   50% {
-        background-color: #bbb;
-        color: #000;
+        background-color: #bbb;        
   }
 }
 @-moz-keyframes blink {
   0%, 100% {
-        background-color: #000;
-        color: #aaa;
+        background-color: #000;        
   }
   50% {
-        background-color: #bbb;
-        color: #000;
+        background-color: #bbb;   
   }
 }
 

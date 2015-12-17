@@ -115,3 +115,7 @@ function setTask(task) {
 	currentTask !== task && term.echoTask(task);	
 	currentTask = task;
 }
+
+function setSection(sectionName) {
+	$(".section-name").html(sectionName);
+}

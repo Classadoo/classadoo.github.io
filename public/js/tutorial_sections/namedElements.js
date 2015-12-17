@@ -1,6 +1,9 @@
 namedElementSteps = [
 	{
-		text: "OK so a web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <c>table background blue</c>."
+		text: "OK, so now I think we have an answer to our first question: "
+	},
+	{
+		text: "A web page is a collection of things, like furniture in a room, as well as some instructions which specify how the things should look and be laid out, like <c>table background blue</c>."
 	},
 	{
 		text: "In the software world we call these 'things', elements.",
@@ -19,7 +22,7 @@ namedElementSteps = [
 		}	
 	},
 	{	
-		task: "Try changing the layout or background of each element, using their new names.<br>Examples: <c>banner <d>edge</d> <d>distance</d></c> or <c>counter background <d>color</d></c>. <d>edge</d> can be top, right, bottom, or left, <d>distance</d> can be any number, and <d>color</d> can be any primary color.",
+		task: "Try changing the layout or background of each element, using their new names.<br>Examples: <c>banner <d>edge</d> <d>distance</d></c> or <c>links background <d>color</d></c>. <d>edge</d> can be top, right, bottom, or left, <d>distance</d> can be any number, and <d>color</d> can be any primary color.",
 		interaction: function(cmd) {			
 			var args = cmd.split(" ")
 			var id = args[0];

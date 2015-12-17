@@ -1,18 +1,19 @@
 furnitureSteps = [
 	{
-		text: "This is the classadoo webpage."
+		text: "This is the classadoo webpage.",
+		section: "Why does this web page look that way it does?"
 	},
 	{
-		text: "What is a webpage really?"
+		text: "You might notice it doesn't look like Facebook, or CNN.com. Each page, including this one has it's own look."
 	},
 	{
-		text: "A webpage is like a room in your house.",
-		action: function() {	
-			// $("body").css("border", "solid black 10px")
-		}
-	},
+		text: "When we created this webpage, we created it to look exactly the way we wanted. So how did we do that?"
+	},	
 	{
-		text: "All the things on the page are like furniture.",
+		text: "Well imagine this webpage is like a room in your house, and all the things you see are like furniture."
+	},	
+	{
+		text: "The table big banner is like a table",
 		action: function() {	
 			overlayExamples()
 		}

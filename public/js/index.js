@@ -46,31 +46,34 @@ function startTerminal() {
 
 			if (step.helpTutorial) nextStep()
 		} else {
-			if (step && step.interaction) {
-				step.task && setTask(step.task);
-				step.action && step.action();
-				term.echoHelp(" ");
-				if (command) {				
-					var goToNextStep = step.interaction(command)
-					if (goToNextStep) {
-						nextStep()	
-					}
-				} 
-			} else if (step) {		
-				console.log("action time!");
-				step.task && setTask(step.task);
-				if (step.text) {
-					step.beforeAction && step.beforeAction();
-					term.echoHelp(step.text, function(){
-						step.action && step.action();
-					});
-				} else {
-					term.echoHelp(" ");
-					step.action && step.action();		
-				}
+			if (step) {
+				step.section && newSection(step.section);
 
-				nextStep()				
-			}               				
+				if (step.interaction) {
+					step.task && setTask(step.task);
+					step.action && step.action();
+					term.echoHelp(" ");
+					if (command) {				
+						var goToNextStep = step.interaction(command)
+						if (goToNextStep) {
+							nextStep()	
+						}
+					} 	
+				} else {					
+					step.task && setTask(step.task);
+					if (step.text) {
+						step.beforeAction && step.beforeAction();
+						term.echoHelp(step.text, function(){
+							step.action && step.action();
+						});
+					} else {
+						term.echoHelp(" ");
+						step.action && step.action();		
+					}
+
+					nextStep()				
+				}
+			} 
 		}		
     }, {
         // greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is an example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
@@ -78,21 +81,34 @@ function startTerminal() {
         enabled: false
     });	
 
-	var progressBar = new ProgressBar($(".progress-bar-container"), steps.length);	
+	var progressBar = new ProgressBar($(".progress-bar-container"), 400);	
+	openConsole();
 
 	function nextStep() {
 		stepIndex += 1;
 		progressBar.incrementProgress();
 	}
+
+	function newSection(sectionName) {		
+		var numberOfSteps = steps.length - stepIndex;
+		$.each(steps.slice(stepIndex + 1), function(i, step) {			
+			if (step.section) {				
+				numberOfSteps = i + 1;
+				return false
+			} 
+		});		
+		setSection(sectionName);		
+		progressBar.reset(numberOfSteps);
+	}
 }
-
-
 
 function openConsole() {
 	consoleOpen = true;
 	var consoleContainer = $(".console-container")
 	consoleContainer.animate({ "height":  consoleContainer[0].scrollHeight }, { complete: function() { consoleEl.click(); } });	
+	$(".intro-container").animate({ "padding-top": 10 });
 	$(".console-button").hide();
+
 	term.enable();
 	term.focus();
 }
@@ -102,52 +118,32 @@ $(function() {
 	$(".console-button").click(openConsole);	
 })
 
-ProgressBar = function(parent, numberOfSteps) {
+ProgressBar = function(parent, size) {
 	var self = this 
 	var progressBarContainer = $("<div class='progress-meter'>");
 	var unit = $("<div class='progress-unit'>");
-	var cursor = $("<div class='progress-cursor progress-unit'>");
+	var cursor = $("<div class='first-progress progress-unit'>");
 
-	var unitWidth = 10;
+	progressBarContainer.css("width", size);	
 
-	unit.css({ 
-		width: unitWidth
-	})	
+	parent.append(progressBarContainer);
 
-	cursor.css({ 
-		width: unitWidth
-	})	
+	function clearProgress() {
+		progressBarContainer.html("");
+	}
 
-	progressBarContainer.css({
-		width: unitWidth * (numberOfSteps + 1)
-	})
-
-	parent.append(progressBarContainer.append(cursor));
+	self.reset = function(newNumberOfSteps) {
+		clearProgress()
+		unit.css({ 
+			width: (100 / (newNumberOfSteps + 1)) + "%"
+		})	
+		cursor.css({ 
+			width: (100 / (newNumberOfSteps + 1)) + "%"
+		})					
+		progressBarContainer.append(cursor.clone());					
+	}
 
 	self.incrementProgress = function () {
 		progressBarContainer.prepend(unit.clone());
-	}
+	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
