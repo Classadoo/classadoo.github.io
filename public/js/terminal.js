@@ -1,6 +1,7 @@
 Terminal = function (parent, cdmHandler, options) {
 	var self = this;	
 	var firstKeypress = true;
+	var enabled = false
 	
 	if (options.enabled !== false) {
 		enabled = true;

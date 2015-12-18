@@ -218,7 +218,7 @@
 .complete-overlay {
 	position: absolute;
 	text-align: center;
-	color: orange;
+	color: #EC81AC;
 	display: none;
 	top: 0;
 	width: 100%;
