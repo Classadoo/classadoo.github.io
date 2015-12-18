@@ -207,7 +207,7 @@
 
 .section-name {
 	width: 70%;
-	color: orange; 
+	color: lemonchiffon; 
 	display: inline-block;
 }
 
@@ -269,7 +269,7 @@ d {
 }
 
 e {
-	color: orange;
+	color: lemonchiffon;
 }
 
 @media (max-device-width: 480px) { 	
