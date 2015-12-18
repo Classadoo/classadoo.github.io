@@ -22,7 +22,8 @@
 
 
 .console-button {
-	color: limegreen;
+	/*color: limegreen;*/
+	color: #7ADf36;
 	margin-top: 40px;
 	font-family: FreeMono, monospace;    	
 	cursor: pointer;	
@@ -39,7 +40,8 @@
 
 .console-container, .progress-container {
 	font-family: FreeMono, monospace;    	
-	color: limegreen;
+	/*color: limegreen;*/
+	color: #7ADf36;
 	text-align: left;	
 	font-size: 18px;	
 }
@@ -159,7 +161,8 @@
 
 .class-title {
 	text-decoration: underline;
-	color: aqua;
+	/*color: aqua;*/
+	color: #40DF7F;
 	text-align: center;
 	margin-bottom: 10px;
 }
@@ -202,12 +205,13 @@
 
 .progress-label {
 	width: 10%;  
-  	color: aqua; 
+  	/*color: aqua; */
+  	color: #40DF7F;
 }
 
 .section-name {
 	width: 70%;
-	color: lemonchiffon; 
+	color: #EC81AC; 
 	display: inline-block;
 }
 
@@ -269,7 +273,7 @@ d {
 }
 
 e {
-	color: lemonchiffon;
+	color: #EC81AC;
 }
 
 @media (max-device-width: 480px) { 	

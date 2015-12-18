@@ -36,7 +36,8 @@
 
 .terminal-wrapper .display-label {
   width: 10%;  
-  color: aqua; 
+  /*color: aqua; */
+  color: #40DF7F;
 }
 
 .terminal-wrapper .greeting {
