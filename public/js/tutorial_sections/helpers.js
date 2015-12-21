@@ -38,6 +38,17 @@ function generateExampleHtmlOverlay(id) {
 }
 
 function prettifyHtml(htmlString) {
+	// // clean up the style tag so when jquery adds extra stuff for different browsers, that doesn't show to the user.
+	// var cleanStyleRegEx = /(background|top|right|left):\s(\w+)\b([^;"]*)/g
+	// var cleanStyleArr = []
+	// var match = cleanStyleRegEx.exec(htmlString)
+	// while (match !== null) {
+	// 	cleanStyleArr = cleanStyleArr.concat(match[1] + ": " + match[2])		
+	// 	match = cleanStyleRegEx.exec(htmlString)
+	// }	
+
+	// htmlString = htmlString.replace(new RegExp('style="[^"]+"', 'g'), 'style="' + cleanStyleArr.join("; ") + '"');
+
 	// insert special tags around each attribute
 	htmlString = htmlString.replace(new RegExp('(\\S+)=("[^"]*")', 'g'), "<span class='attr-highlight-$1'>$1=$2</span>");
 
@@ -54,13 +65,23 @@ function prettifyHtml(htmlString) {
 }
 
 // functions to style an el, it's shadow el and update html in the overlay
-function style(id, newStyle) {
+function style(id, prop, attr) {
 	var el = $("[example-id=" + id + "]")
 	var shadowEl = $("#" + id)	
 
-	el.css(newStyle);	
-	shadowEl.css(newStyle);	
+	el.css(prop, attr);	
+	shadowEl.attr("style", prop + ": " + attr);	
 
+	el.find(".example-overlay").html(generateExampleHtmlOverlay(id));
+}
+
+function clearStyle(id) {
+	var el = $("[example-id=" + id + "]")
+	var shadowEl = $("#" + id)	
+
+	el.css({background: "", top: "", right: "", left: "", bottom: ""});
+	shadowEl.css({background: "", top: "", right: "", left: "", bottom: ""});
+	
 	el.find(".example-overlay").html(generateExampleHtmlOverlay(id));
 }
 
@@ -139,3 +160,20 @@ function sendEmail(emailAddress) {
 		}
 	})
 }
+
+function shadowCss($el, prop, attr) {
+	var currentStyle = $el.attr("style") 
+	var styleArr;
+	if (currentStyle) {
+		styleArr = currentStyle.split(";");	
+	} else {
+		styleArr = []
+	}
+	
+	styleArr = styleArr.concat(prop + ": " + attr);
+	$el.attr("style", styleArr.join("; "));
+}
+
+
+
+

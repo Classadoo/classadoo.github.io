@@ -102,7 +102,7 @@ Terminal = function (parent, cdmHandler, options) {
 		commandHistoryWrapper.css("visibility", "hidden");
 		taskWrapper.css("visibility", "hidden");
 		helpWrapper.css("visibility", "hidden")		
-		commandInputWrapper.css("visibility", "hidden");
+		commandDisplayWrapper.css("visibility", "hidden");
 
 		function respondToKeydown(e) {
 			if (e.keyCode === 13 && enabled) {										
@@ -122,7 +122,7 @@ Terminal = function (parent, cdmHandler, options) {
 		taskWrapper.css("visibility", "visible");
 		commandHistoryWrapper.css("visibility", "visible");
 		helpWrapper.css("visibility", "visible")
-		commandInputWrapper.css("visibility", "visible")
+		commandDisplayWrapper.css("visibility", "visible")
 	}
 
 	self.echoTask = function(text) {

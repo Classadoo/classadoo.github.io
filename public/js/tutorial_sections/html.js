@@ -63,13 +63,13 @@ htmlSteps = [
 				if (command === "background") {
 					if (validColors.indexOf(arg) > -1) {
 						el.css(command, arg); 								
-						shadowEl.css(command, arg)
+						shadowCss(shadowEl, command, arg)
 						el.find(".example-overlay").css("background", "rgba(80,80,80,.6)");
 						actionTaken = true;
 					} 
 				} else if (validDirections.indexOf(command) > -1) {
 					el.css(command, arg); 
-					shadowEl.css(command, arg)														
+					shadowCss(shadowEl, command, arg);
 					actionTaken = true;
 				} 										
 			} 
@@ -130,9 +130,9 @@ htmlSteps = [
 
 			function animateBanner() {
 				if (bannerRight) {
-					animate("banner", { right: "100px" });	
+					animate("banner", {"right": "100px" });	
 				} else {					
-					animate("banner", {right: "-100px"})
+					animate("banner", {"right": "-100px"})
 				}
 
 				bannerRight = !bannerRight				
@@ -140,9 +140,9 @@ htmlSteps = [
 
 			function animateLinks() {
 				if (linksTop) {
-					animate("links", { top: "20px" });	
+					animate("links", { "top": "20px" });	
 				} else {					
-					animate("links", {top: "-20px"})
+					animate("links", {"top": "-20px"})
 				}
 
 				linksTop = !linksTop				
@@ -150,9 +150,9 @@ htmlSteps = [
 
 			logoInterval = setInterval(function() {
 				if (logoBlue) {
-					style("logo", { background: "blue" });	
+					style("logo", "background", "blue");	
 				} else {
-					style("logo", {background: "green"})
+					style("logo", "background", "green")
 				}
 				
 				logoBlue = !logoBlue				
@@ -160,9 +160,9 @@ htmlSteps = [
 
 			pitch1Interval = setInterval(function() {
 				if (pitch1Red) {
-					style("text1", { background: "red" });	
+					style("text1", "background", "red");	
 				} else {
-					style("text1", {background: "grey"})
+					style("text1", "background", "grey")
 				}
 				
 				pitch1Red = !pitch1Red				
@@ -170,9 +170,9 @@ htmlSteps = [
 
 			pitch2Interval = setInterval(function() {
 				if (pitch2Left) {
-					style("text2", { left: "40px" });	
+					style("text2", "left", "40px");	
 				} else {
-					style("text2", {left: "-40px"})
+					style("text2", "left", "-40px")
 				}
 				
 				pitch2Left = !pitch2Left				
@@ -180,9 +180,9 @@ htmlSteps = [
 
 			pitch3Interval = setInterval(function() {
 				if (pitch3Yellow) {
-					style("text3", { background: "yellow" });	
+					style("text3", "background", "yellow");	
 				} else {
-					style("text3", { background: "teal"});
+					style("text3", "background", "teal");
 				}
 				
 				pitch3Yellow = !pitch3Yellow				
@@ -201,12 +201,12 @@ htmlSteps = [
 			clearInterval(pitch2Interval);
 			clearInterval(pitch3Interval);
 			setTimeout(function() {
-				style("logo", {background: ""});
-				style("banner", {right: ""});
-				style("links", {top: ""});
-				style("text1", { background: "" })
-				style("text2", { left: "" })
-				style("text3", { background: "" })	
+				clearStyle("logo");
+				clearStyle("banner");
+				clearStyle("links");
+				clearStyle("text1");
+				clearStyle("text2");
+				clearStyle("text3");
 			}, 1000)
 		}		
 	},
