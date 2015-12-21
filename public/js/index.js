@@ -17,9 +17,9 @@ var term;
 
 var steps = []
 
-steps = steps.concat(introSteps);
-steps = steps.concat(furnitureSteps);
-steps = steps.concat(namedElementSteps);
+// steps = steps.concat(introSteps);
+// steps = steps.concat(furnitureSteps);
+// steps = steps.concat(namedElementSteps);
 steps = steps.concat(htmlSteps); 
 
 function startTerminal() {
@@ -82,13 +82,13 @@ function startTerminal() {
 			} 
 		}		
     }, {
-        greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is a 10 minute example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
+        // greeting: "<div class='class-title'>Example Tutorial: How a Webpage Works</div><div class='class-intro'>Welcome to your first classadoo tutorial! This is a 10 minute example of what a classadoo session is like, minus a live instructor. If you like this tutorial, email us, and we can schedule another one with a real teacher!</div><div class='call-to-action'>Press enter to get started!</div>",  
         prompt: "press enter or type <c>help</c>>",
         enabled: false
     });	
 
 	var progressBar = new ProgressBar($(".progress-bar-container"), 400);	
-	// openConsole();
+	openConsole();
 
 	function nextStep(step) {
 		stepIndex += 1;

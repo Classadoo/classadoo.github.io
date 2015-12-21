@@ -13,28 +13,31 @@ Terminal = function (parent, cdmHandler, options) {
 
 	var displayWrapper = $("<div class='display-wrapper'>");
 
-	var taskLabel = $("<div class='display-label'>task</div>");
-	var taskDisplay = $("<div class='task-display display'>")
-	var taskWrapper = $("<div class='task-wrapper'>")
+	var taskLabel = $("<div class='display-label col-md-1'>task</div>");
+	var taskDisplay = $("<div class='task-display display col-md-10'>")
+	var taskWrapper = $("<div class='task-wrapper row'>")
 
 	taskWrapper.append(taskLabel).append(taskDisplay)
 
-	var helpLabel = $("<div class='display-label'>help</div>");
-	var helpDisplay = $("<div class='help-display display'>")
-	var helpWrapper = $("<div class='help-wrapper'>")
+	var helpLabel = $("<div class='display-label col-md-1'>help</div>");
+	var helpDisplay = $("<div class='help-display display col-md-10'>")
+	var helpWrapper = $("<div class='help-wrapper row'>")
 
 	helpWrapper.append(helpLabel).append(helpDisplay)
 
-	var commandHistoryLabel = $("<div class='display-label'>&nbsp;</div>");
-	var commandHistoryDisplay = $("<div class='command-history-display display'>");
-	var commandHistoryWrapper = $("<div class='command-history-wrapper'>")
+	var commandHistoryLabel = $("<div class='display-label col-md-1'>&nbsp;</div>");
+	var commandHistoryDisplay = $("<div class='command-history-display display col-md-10'>");
+	var commandHistoryWrapper = $("<div class='command-history-wrapper row'>")
 
 	commandHistoryWrapper.append(commandHistoryLabel).append(commandHistoryDisplay)
 	
-	var commandInputLabel = $("<div class='display-label'>input</div>");
+	var commandInputLabel = $("<div class='display-label col-md-1'>input</div>");	
+	var commandInputWrapper = $("<div class='input-wrapper col-md-10 display'>")	
 	var prompt = $("<span class='prompt'>" + promptText + "</span>")
-	var commandInput = $("<span class='command-input' contentEditable='true'>");
-	var commandInputWrapper = $("<div class='input-wrapper'>")	
+	var commandInput = $("<span class='command-input' contentEditable='true'>");	
+	var commandDisplayWrapper = $("<div class='command-display-wrapper row'>")	
+
+	commandInputWrapper.append(prompt).append(commandInput)
 
 	var greetingEl;
 
@@ -51,7 +54,7 @@ Terminal = function (parent, cdmHandler, options) {
 	})
 
 	commandHistoryDisplay.css({
-		position: "absolute",
+		overflow: "hidden",
 		bottom: "0px",
 		"max-height": "1.5em"
 	})
@@ -66,8 +69,8 @@ Terminal = function (parent, cdmHandler, options) {
 	})
 
 	displayWrapper.append(taskWrapper).append(helpWrapper).append(commandHistoryWrapper);
-	commandInputWrapper.append(commandInputLabel).append(prompt).append(commandInput);
-	wrapper.append(displayWrapper).append(commandInputWrapper);	
+	commandDisplayWrapper.append(commandInputLabel).append(commandInputWrapper)
+	wrapper.append(displayWrapper).append(commandDisplayWrapper);	
 
 	commandInput.keydown(handleCommand)	
 

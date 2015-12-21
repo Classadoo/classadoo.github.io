@@ -2,8 +2,10 @@
   position: relative;
 }
 
-.terminal-wrapper .display {
-  overflow: hidden;
+.terminal-wrapper .display {  
+  padding-left: 0px;
+  padding-right: 0px; 
+  margin-left: 40px;
 }
 
 .terminal-wrapper .command-input {
@@ -26,16 +28,16 @@
   border-bottom: 2px solid rgba(86, 86, 86, .8);
 }
 
-.task-wrapper, .help-wrapper, .command-history-wrapper, .input-wrapper {
+/*.task-wrapper, .help-wrapper, .command-history-wrapper, .input-wrapper {
   display: flex;
-}
+}*/
 
-.terminal-wrapper .display {
+/*.terminal-wrapper .display {
   width: 80%;
-}
+}*/
 
 .terminal-wrapper .display-label {
-  width: 10%;  
+  /*width: 10%;  */
   /*color: aqua; */
   color: #40DF7F;
 }

@@ -170,7 +170,6 @@
 /*Progress Bar*/
 
 .progress-container {
-	display: flex;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	visibility: hidden;
@@ -192,9 +191,8 @@
 	top: .25em;	
 }
 
-.progress-display {	
-	display: flex;
-	width: 80%;
+.progress-display {		
+	/*width: 80%;*/
 }
 
 .progress-unit {
@@ -204,15 +202,18 @@
 }
 
 .progress-label {
-	width: 10%;  
+	/*width: 10%;  */
   	/*color: aqua; */
   	color: #40DF7F;
 }
 
 .section-name {
-	width: 70%;
+	/*width: 70%;*/
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 40px;
 	color: #EC81AC; 
-	display: inline-block;
+	/*display: inline-block;*/
 }
 
 .complete-overlay {
