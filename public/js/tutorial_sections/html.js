@@ -238,7 +238,7 @@ htmlSteps = [
 	{		
 		section: "What's next?",
 		noProgress: true,
-		task: "That's it for now! If you're interested in scheduling a full class with us, <c>just type in your email address now</c>, and we'll get back to you within a day.",		
+		task: "That's it for now! If you're interested in scheduling a live class with us, <c>just type in your email address now</c>, and we'll get back to you within a day. You can also read more about our <a href='/teachers.html'>teachers</a> or <a href='/courses.html'>courses</a>.",		
 		interaction: function(cmd) {				
 			sendEmail(cmd);
 			term.echoHelp("Thanks, we'll be in touch soon!");

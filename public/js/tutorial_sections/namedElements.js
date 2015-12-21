@@ -20,7 +20,7 @@ namedElementSteps = [
 		}	
 	},
 	{	
-		task: "Try changing the layout or background of each element again, using their new names.<br>Examples: <c>banner <d>top, right, bottom, or left</d> <d>distance</d></c> or <c>links background <d>color</d></c>.",
+		task: "Try changing the layout or background of each element again, using their new names.<br>Examples: <c>banner <d>top, right, bottom, or left</d> <d>distance</d></c> or <c>links background <d>primary color</d></c>.",
 		interaction: function(cmd) {			
 			var args = cmd.split(" ")
 			var id = args[0];
