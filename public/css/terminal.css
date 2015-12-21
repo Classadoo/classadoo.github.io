@@ -8,6 +8,10 @@
   margin-left: 40px;
 }
 
+.terminal-wrapper .input-history {
+  margin-left: 0px;
+}
+
 .terminal-wrapper .command-input {
   outline: none;
   color: gainsboro;

@@ -84,6 +84,7 @@ Terminal = function (parent, cdmHandler, options) {
 				var inputClone = commandInputWrapper.clone();
 				inputClone.find(".prompt").html(previousPrompt);				
 				inputClone.find(".display-label").remove();
+				inputClone.addClass("input-history");
 				commandHistoryDisplay.append(inputClone);
 				commandHistoryDisplay.scrollTop(commandHistoryDisplay[0].scrollHeight);
 			}
