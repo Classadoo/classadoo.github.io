@@ -231,11 +231,11 @@ htmlSteps = [
 	},
 	{
 		text: "Elements are put onto a page by code called HTML.",
+		action: logComplete(5)
 	},
 	{
 		questionComplete: true,
-		text: "<e>And to answer our final question: by changing the 'style' of each element, in code, we can change the way an element looks.</e>",
-		action: logComplete(5)
+		text: "<e>And to answer our final question: by changing the 'style' of each element, in code, we can change the way an element looks.</e>",		
 	},		
 	{		
 		section: "What's next?",
@@ -246,11 +246,11 @@ htmlSteps = [
 			term.echoHelp("Thanks, we'll be in touch soon!");
 			return true
 		},
-		help: "Type in your email address and press enter, if you'd like more info, or to schedule a class."
+		help: "Type in your email address and press enter, if you'd like more info, or to schedule a class.",
+		action: logComplete(6)
 	},
 	{
 		noProgress: true,
-		task: " ",
-		action: logComplete(6)
+		task: " ",		
 	}
 ]
