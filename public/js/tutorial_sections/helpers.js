@@ -81,7 +81,7 @@ function clearStyle(id) {
 
 	el.css({background: "", top: "", right: "", left: "", bottom: ""});
 	shadowEl.css({background: "", top: "", right: "", left: "", bottom: ""});
-	
+
 	el.find(".example-overlay").html(generateExampleHtmlOverlay(id));
 }
 
@@ -174,6 +174,10 @@ function shadowCss($el, prop, attr) {
 	$el.attr("style", styleArr.join("; "));
 }
 
-
+function logComplete(sectionNumber) {
+	return function() {
+		ga('send', 'event', 'tutorial', sectionNumber);
+	}
+}
 
 

@@ -144,6 +144,7 @@ furnitureSteps = [
 	},
 	{
 		questionComplete: true,
-		text: "<e>This webpage's look was created by arranging things (like furniture) on the page, using commands like <c>table right 100</c> or <c>counter background blue</c>.</e>"
+		text: "<e>This webpage's look was created by arranging things (like furniture) on the page, using commands like <c>table right 100</c> or <c>counter background blue</c>.</e>",
+		action: logComplete(2)
 	}	
 ]

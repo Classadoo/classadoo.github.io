@@ -76,6 +76,7 @@ namedElementSteps = [
 	},
 	{
 		questionComplete: true,
-		text: "<e>Everything on a webpage is an element, with names. We can use these names to change the way elements look.<e>"
+		text: "<e>Everything on a webpage is an element, with names. We can use these names to change the way elements look.<e>",
+		action: logComplete(3)
 	}
 ]

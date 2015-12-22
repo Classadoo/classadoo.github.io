@@ -69,6 +69,7 @@ var introSteps = [
 	{
 		task: " ",
 		text: "Awesome, now you know how the tutorial works, so we've solved our first question! Hit enter when you're ready to continue.",
-		questionComplete: true
+		questionComplete: true,
+		action: logComplete(1)
 	}	
 ]

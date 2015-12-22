@@ -42,7 +42,8 @@ htmlSteps = [
 	},
 	{
 		questionComplete: true,
-		text: "<e>So now we know that elements are placed on a page by HTML code, like what you see here.</e>"
+		text: "<e>So now we know that elements are placed on a page by HTML code, like what you see here.</e>",
+		action: logComplete(4)
 	},
 	{
 		section: "What does the code look like when we move an element?",
@@ -233,7 +234,8 @@ htmlSteps = [
 	},
 	{
 		questionComplete: true,
-		text: "<e>And to answer our final question: by changing the 'style' of each element, in code, we can change the way an element looks.</e>"
+		text: "<e>And to answer our final question: by changing the 'style' of each element, in code, we can change the way an element looks.</e>",
+		action: logComplete(5)
 	},		
 	{		
 		section: "What's next?",
@@ -248,6 +250,7 @@ htmlSteps = [
 	},
 	{
 		noProgress: true,
-		task: " "
+		task: " ",
+		action: logComplete(6)
 	}
 ]
