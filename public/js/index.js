@@ -30,7 +30,7 @@ function startTerminal() {
 	var progressContainer = $(".progress-container");
 
 	// overlayExamples()
-	overlayHtmlExamples();
+	// overlayHtmlExamples();
 
 	term = new Terminal(consoleEl, function(command) {
 		progressContainer.css("visibility", "visible");
