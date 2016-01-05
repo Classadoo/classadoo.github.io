@@ -244,6 +244,7 @@ htmlSteps = [
 		interaction: function(cmd) {				
 			sendEmail(cmd);
 			term.echoHelp("Thanks, we'll be in touch soon!");
+			logComplete(7);
 			return true
 		},
 		help: "Type in your email address and press enter, if you'd like more info, or to schedule a class.",
