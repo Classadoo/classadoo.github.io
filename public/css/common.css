@@ -7,7 +7,7 @@ h4 {
 }
 
 .logo-container {
-	margin-left: 20px;	
+	margin-left: 60px;	
 	float: left;
 	border: 1px solid white;
 }
@@ -20,20 +20,21 @@ h4 {
 
 .nav-links {
 	float: right;	
-	margin-right: 30px;		
+	margin-right: 60px;		
 }
 
 .nav-link {
 	display: inline-block;
-	margin-left: 45px;
+	margin-left: 55px;	
 }
 
 .nav-link a {
-	color: #3ec2d2;
+/*	color: #3ec2d2;*/
+	color: black;
 }
 
 .nav-link.active a {
-	color: black;
+	color: #3ec2d2;
 }
 
 .nav-link.active:hover a {
